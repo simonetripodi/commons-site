@@ -37,8 +37,14 @@
       <facebookLike />
       <googlePlusOne />
     </fluidoSkin>
+      
   </custom>
+  
+
   <body>
+    <head>
+      <link rel="stylesheet" href="./css/bootstrap-responsive.min.css" />
+    </head>
     <links>
       <item name="Components"            href="/components.html" />
       <item name="Sandbox"               href="/sandbox/index.html" />

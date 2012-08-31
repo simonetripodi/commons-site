@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<document>
+
+ <properties>
+  <title>Publishing The Site</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+ </properties>
+
+<body> 
+
+<section name='Publishing The Website'>
+
+  <subsection name="Update Component Website">
+    <strong>Publish Updated Website</strong>
+    <p>
+    Run the following to deploy the new component website:
+    <pre>
+      mvn site:deploy
+    </pre>
+    </p>
+    <p>
+    On people.apache.org, verify that the directory has been updated, and that the
+    file and directory permissions are correct (readable by all, not writeable by
+    world, but group writeable).
+    </p>
+    <p>
+    Note that the files are transferred to the real web site only every
+    few hours, so it may be a while before you see your changes appear. However if
+    you set your webbrowser's HTTP proxy to 140.211.11.10 port 80 and access
+    http://commons.apache.org/ you should be able to see the changes immediately.
+    </p>
+    <strong>Perform Manual Fixups (if any)</strong>
+    <p>
+    It is quite nice for a component website to provide not just the latest javadocs and
+    release notes, but also links to this information for previous releases. However Maven
+    doesn't provide any way to do this. The usual solution is therefore for the component
+    to arrange for its generated website to have some navbar links that point to somewhere
+    that doesn't exist (at least not created by Maven), then manually put the missing info
+    at the needed location after "maven site:deploy" has been run. If the component you
+    are deploying has done such tricks, then you need to do the manual fixups now.
+    </p>
+    <p>
+    As an example, the foo component's website might have links for "1.1 release notes"
+    and "1.1 javadoc" that point to "release11/RELEASE-NOTES.txt" and "release11/api";
+    in that case you'll need to create that release11 directory and install the old
+    release notes and javadoc there. 
+    </p>
+    <p>
+    Note that "maven site:deploy" will not delete any extra directories or files that were
+    already there, so if there was a "release10" directory that is no longer referenced
+    from the new website then you should delete that old directory.
+    </p>
+  </subsection>
+
+</section>
+
+</body>
+</document>

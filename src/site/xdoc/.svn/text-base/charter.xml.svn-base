@@ -1,0 +1,118 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+
+ <properties>
+  <title>Charter</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+ </properties>
+
+ <body>
+
+<section name="Scope of Apache Commons">
+
+<p>On <a href="http://www.apache.org/foundation/records/minutes/2007/board_minutes_2007_06_20.txt">June 20, 2007</a>, 
+the Apache Board voted to promote the Jakarta Commons subproject to Apache Commons. </p>
+
+<pre>
+D. Establish the Apache Commons project
+
+      WHEREAS, the Board of Directors deems it to be in the best
+      interests of the Foundation and consistent with the
+      Foundation's purpose to establish a Project Management
+      Committee charged with the creation and maintenance of
+      Java focused reusable libraries and components.
+
+      NOW, THEREFORE, BE IT RESOLVED, that a Project Management
+      Committee (PMC), to be known as the "Apache Commons Project",
+      be and hereby is established pursuant to Bylaws of the
+      Foundation; and be it further
+
+      RESOLVED, that the Apache Commons Project be and hereby is
+      responsible for the creation and maintenance of Java focused
+      reusable libraries and components; and be it further
+
+      RESOLVED, that the office of "Vice President, Commons" be and
+      hereby is created, the person holding such office to serve at
+      the direction of the Board of Directors as the chair of the
+      Apache Commons Project, and to have primary responsibility for
+      management of the projects within the scope of responsibility
+      of the Apache Commons Project; and be it further
+
+      RESOLVED, that the persons listed immediately below be and
+      hereby are appointed to serve as the initial members of the
+      Apache Commons Project:
+
+        * Henri Yandell                &lt;bayard@apache.org&gt;
+        * Jochen Wiedmann              &lt;jochen@apache.org&gt;
+        * Mario Ivankovits             &lt;imario@apache.org&gt;
+        * Stephen Colebourne           &lt;scolebourne@apache.org&gt;
+        * Dennis Lundberg              &lt;dennisl@apache.org&gt;
+        * Niall Pemberton              &lt;niallp@apache.org&gt;
+        * Martin van den Bemt          &lt;mvdb@apache.org&gt;
+        * Oliver Zeigermann            &lt;ozeigermann@apache.org&gt;
+        * JArg Schaible                &lt;joehni@apache.org&gt;
+        * Oliver Heger                 &lt;oheger@apache.org&gt;
+        * Matt Benson                  &lt;mbenson@apache.org&gt;
+        * Martin Cooper                &lt;martinc@apache.org&gt;
+        * Phil Steitz                  &lt;psteitz@apache.org&gt;
+        * Torsten Curdt                &lt;tcurdt@apache.org&gt;
+        * Daniel Savarese              &lt;dfs at apache.org&gt;
+        * Rory Winston                 &lt;rwinston at apache.org&gt;
+        * Luc Maisonobe                &lt;luc@apache.org&gt;
+        * Joerg Pietschmann            &lt;pietsch@apache.org&gt;
+        * Dion Gillard                 &lt;dion@apache.org&gt;
+        * Brent Worden                 &lt;brentworden@apache.org&gt;
+
+      NOW, THEREFORE, BE IT FURTHER RESOLVED, that Torsten Curdt
+      be appointed to the office of Vice President, Commons, to serve
+      in accordance with and subject to the direction of the Board of
+      Directors and the Bylaws of the Foundation until death,
+      resignation, retirement, removal or disqualification, or until
+      a successor is appointed; and be it further
+
+      RESOLVED, that the initial Apache Commons Project be and hereby
+      is tasked with the creation of a set of bylaws intended to
+      encourage open development and increased participation in the
+      Commons Project; and be it further
+
+      RESOLVED, that the initial Apache Commons Project be and hereby
+      is tasked with the migration and rationalization of the Apache
+      Jakarta Project's Commons; and be it further
+
+      RESOLVED, that all responsibility pertaining to the Commons
+      sub-project encumbered upon the Apache Jakarta
+      Project are hereafter discharged.
+
+      Special Order 6D, Establish the Apache Commons project, was
+      approved by Unanimous Vote.
+</pre>
+
+<p>This defines the scope of Apache Commons. </p>
+</section>
+
+<section name="Apache Commons 'Charter'">
+<p>The Apache Commons PMC may decide to focus the scope further via various policies, rules and guidelines that will 
+appear below. For posterity, the <a href="oldcharter.html">Jakarta Commons Charter</a> is kept as a part of this website. </p>
+
+<p>Currently no such refinements apply. </p>
+</section>
+
+</body>
+</document>

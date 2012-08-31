@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+  <properties>
+    <title>Dormant</title>
+    <author email="dev@commons.apache.org">Commons Documentation Team</author>
+  </properties>
+  <body>
+    <section name="The Apache Commons Dormant">
+      <p>
+        The Dormant is a Subversion repository for Commons components that
+        have had little recent development activity and no individual or group
+        of individual committers has emerged to champion its ultimate
+        promotion to Commons Proper.
+      </p>
+      <p>
+        If you wish to use any of these components, you must build them
+        yourselves. It is best to assume that these components will not be
+        released in the near future.
+      </p>
+
+     <table>
+        <!-- This list should agree with ../../site.xml -->
+        <tr><th>Dormant</th><th></th></tr>
+        <tr><td><a href="cache/">Cache</a></td>
+            <td>Cache provides object caching services.</td></tr>
+        <tr><td><a href="clazz/">Clazz</a></td>
+            <td>Clazz focuses on introspection and class manipulation.</td></tr>
+        <tr><td><a href="contract/">Contract</a></td>
+            <td>This component makes all the nice features available to the java programming language that come along with contract based programming.</td></tr>
+        <tr><td><a href="convert/">Convert</a></td>
+            <td>Commons-Convert aims to provide a single library dedicated to the task of converting an object of one type to another.</td></tr>
+        <tr><td><a href="events/">Events</a></td>
+            <td>Commons-Events provides additional classes for firing and handling events. It focusses on the Java Collections Framework, providing decorators to other collections that fire events.</td></tr>
+        <tr><td><a href="feedparser/">Feedparser</a></td>
+            <td>A Java RSS/Atom parser designed to elegantly support all versions of RSS (0.9, 0.91, 0.92, 1.0, and 2.0), Atom 0.5 (and future versions) as well as easy ad hoc extension and RSS 1.0 modules capability.</td></tr>
+        <tr><td><a href="jjar/">JJar</a></td>
+            <td>Jakarta JAR Archive Repository</td></tr>
+        <tr><td><a href="latka/">Latka</a></td>
+            <td>Commons-Latka is an HTTP functional testing suite for automated QA, acceptance and regression testing.</td></tr>
+        <tr><td><a href="mapper/">Mapper</a></td>
+            <td>Mapper is a thin abstraction layer around a project's chosen data mapping technology (a.k.a. DAO pattern).</td></tr>
+        <tr><td><a href="messenger/">Messenger</a></td>
+            <td>Messenger is an easy to use and lightweight framework for working with JMS in the web tier.</td></tr>
+        <tr><td><a href="resources/">Resources</a></td>
+            <td>Resources provides a lightweight framework for defining and looking up internationalized message strings keyed by a java.util.Locale and a message key.</td></tr>
+        <tr><td><a href="scaffold/">Scaffold</a></td>
+            <td>Scaffold is a toolkit for building web applications.</td></tr>
+        <tr><td><a href="threadpool/">ThreadPool</a></td>
+            <td>ThreadPool is a simple component for asynchronously dispatching work to another thread in a pool for simple multi threaded programming.</td></tr>
+        <tr><td><a href="workflow/">Workflow</a></td>
+            <td>Workflow provides a framework for building workflow management systems.</td></tr>
+        <tr><td><a href="xmlio/">XMLIO</a></td>
+            <td>Simple and fast importer for XML configuration or import files.</td></tr>
+      </table>
+
+    </section>
+
+    <section name="Revival of the Dormant Components">
+      <p>
+        A Commons Dormant component may be revived to the Commons Sandbox
+        if one or more committers are interested in picking up
+        development of the components and working towards the promotion to
+        Commons Proper.
+      </p>
+
+      <p>
+        A revival of a Commons Dormant component must be preceded by a VOTE on
+        the <a href="../mail-lists.html">commons
+        developers mailing list</a>.
+      </p>
+
+    </section>
+
+  </body>
+</document>

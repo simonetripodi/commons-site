@@ -1,0 +1,114 @@
+<?xml version="1.0" ?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+  <properties>
+    <title>Sandbox</title>
+    <author email="dev@commons.apache.org">Commons Documentation Team</author>
+  </properties>
+  <body>
+    <section name="The Apache Commons Sandbox">
+      <p>
+        The Sandbox is a Subversion repository for Commons committers to
+        function as an open workspace for sharing and collaboration.
+        The Sandbox serves as a staging ground for project which are
+        destined for what is known as the Commons Proper.
+      </p>
+
+     <table>
+        <!-- This list should agree with ../../site.xml -->
+        <tr><th>Sandbox</th><th></th></tr>
+        <tr><td><a href="beanutils2/">BeanUtils2</a></td>
+            <td>Redesign of Commons BeanUtils.</td></tr>
+        <tr><td><a href="cli2/">CLI2</a></td>
+            <td>Redesign of Commons CLI.</td></tr>
+        <tr><td><a href="convert/">Convert</a></td>
+            <td>Commons-Convert aims to provide a single library dedicated to the task of converting an object of one type to another.</td></tr>
+        <tr><td><a href="finder/">Finder</a></td>
+            <td>Java library inspired by the UNIX find command.</td></tr>
+        <tr><td><a href="flatfile/">Flatfile</a></td>
+            <td>Java library for working with flat data structures.</td></tr>
+        <tr><td><a href="graph/">Graph</a></td>
+            <td>A general purpose Graph APIs and algorithms.</td></tr>
+        <tr><td><a href="i18n/">I18n</a></td>
+            <td>Adds the feature of localized message bundles that consist of one or many localized texts that belong together. Think of an error message that consists of title, text, summary and error details.</td></tr>
+        <tr><td><a href="id/">Id</a></td>
+            <td>Id is a component used to generate identifiers.</td></tr>
+        <tr><td><a href="javaflow/">Javaflow</a></td>
+            <td>Continuation implementation to capture the state of the application.</td></tr>
+        <tr><td><a href="jnet/">JNet</a></td>
+            <td>JNet allows to use dynamically register url stream handlers through the java.net API.</td></tr>
+        <tr><td><a href="monitoring/">Monitoring</a></td>
+            <td>Monitoring provides a simple, lightweight toolkit to instrument java application monitoring capabilities, including performances and thread concurrency.</td></tr>
+        <tr><td><a href="nabla/">Nabla</a></td>
+            <td>Nabla provides automatic differentiation classes that can generate derivative of any function implemented in the Java language.</td></tr>
+        <tr><td><a href="openpgp/">OpenPGP</a></td>
+            <td>Interface to signing and verifying data using OpenPGP.</td></tr>
+        <tr><td><a href="performance/">Performance</a></td>
+            <td>A small framework for microbenchmark clients, with implementations for Commons DBCP and Pool.</td></tr>
+        <tr><td><a href="pipeline/">Pipeline</a></td>
+            <td>Provides a set of pipeline utilities designed around work queues that run in parallel to sequentially process data objects data objects.</td></tr>
+      </table>
+
+    </section>
+
+    <section name="The Apache Commons Sandbox - Google Summer of Code Projects">
+      <p>
+        <a href="http://code.google.com/soc/">Google Summer of Code</a><sup>TM</sup>
+        is a global program that offers student developers stipends to write code for various
+        open source software projects. The Apache Software Foundation participates in
+        the program every year.
+      </p>
+      <p>
+        See the <a href="gsoc/index.html">Google Summer of Code space in Commons Sandbox</a>
+        for details.
+      </p>
+    </section>
+
+    <section name="Status of the Sandbox Components">
+      <p>
+        Check the status of a sandbox component on 
+        <a href="http://wiki.apache.org/commons/TheSandbox">the sandbox wiki page</a>
+        or just ask on one of
+        <a href="mail-lists.html">the commons mailing lists</a>.
+      </p>
+
+      <p>
+        A Sandbox component is considered active if there is a definite plan
+        for promotion to the Commons Proper and there is an active group of
+        existing committers working on a component.
+      </p>
+
+      <p>
+        A Commons Sandbox component is considered dormant if there is little
+        recent development activity and no individual or group of individual
+        commiters has emerged to champion its ultimate promotion to
+        Commons Proper. See the Commons
+        <a href="dormant/">dormant components</a>
+        webpage for a list of Commons components currently considered dormant.
+      </p>
+
+      <p>
+        A Commons Sandbox component is considered inactive if there is 
+        no active development for a sustained period of time.
+      </p>
+
+    </section>
+
+  </body>
+</document>

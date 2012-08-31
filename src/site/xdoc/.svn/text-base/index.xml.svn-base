@@ -1,0 +1,272 @@
+<?xml version="1.0" ?>
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements. See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version
+    2.0 (the "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+    applicable law or agreed to in writing, software distributed under
+    the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+    OR CONDITIONS OF ANY KIND, either express or implied. See the
+    License for the specific language governing permissions and
+    limitations under the License.
+  -->
+
+<document>
+  <properties>
+    <title>Apache Commons</title>
+    <author email="dev@commons.apache.org">Commons Documentation Team</author>
+  </properties>
+  <body>
+    <section name="Welcome to the Apache Commons">
+      <p>
+        The Commons is an Apache project focused on all aspects of
+        reusable Java components.
+      </p>
+      <p>
+        The Apache Commons project is composed of three parts:
+      </p>
+      <ul>
+        <li>
+          <a href="components.html">The Commons Proper</a>
+          - A repository of reusable Java components.
+        </li>
+        <li>
+          <a href="sandbox/index.html">The Commons Sandbox</a>
+          - A workspace for Java component development.
+        </li>
+        <li>
+          <a href="dormant/index.html">The Commons Dormant</a>
+          - A repository of components that are currently inactive.
+        </li>
+      </ul>
+      <p>
+        You may also read our <a href="charter.html">charter</a>,
+        which spells out the goals of the project in greater detail.
+      </p>
+    </section>
+
+    <section name="The Commons Proper">
+      <p>
+        The Commons Proper is dedicated to one principal goal:
+        creating and maintaining reusable Java components. The
+        Commons Proper is a place for collaboration and sharing, where
+        developers from throughout the Apache community can work
+        together on projects to be shared by the Apache projects and
+        Apache users.
+      </p>
+      <p>
+        Commons developers will make an effort to ensure that their
+        components have minimal dependencies on other libraries, so that
+        these components can be deployed easily. In addition, Commons
+        components will keep their interfaces as stable as possible, so
+        that Apache users (including other Apache projects) can implement
+        these components without having to worry about changes in the
+        future.
+      </p>
+      <p>
+        This <a href='http://www.onjava.com/pub/a/onjava/2003/06/25/commons.html'>article</a>
+        gives an overview of (some of) the components which can be found here.
+      </p>
+      <p>
+        We welcome participation from all that are interested, at all
+        skill levels. Coding, documentation and testing are all critical
+        parts of the software development process. If you are interested
+        in participating in any of these aspects, please join us!
+     </p>
+
+     <table>
+        <!-- This list should agree with ../site.xml and components.xml and downloads/index.xml -->
+        <tr><th>Components</th><th></th></tr>
+        <tr><td><a href="attributes/">Attributes</a></td>
+            <td>Runtime API to metadata attributes such as doclet tags.</td></tr>
+        <tr><td><a href="bcel/">BCEL</a></td>
+            <td>Byte Code Engineering Library - analyze, create, and manipulate Java class files</td></tr>
+        <tr><td><a href="beanutils/">BeanUtils</a></td>
+            <td>Easy-to-use wrappers around the Java reflection and introspection APIs.</td></tr>
+        <tr><td><a href="betwixt/">Betwixt</a></td>
+            <td>Services for mapping JavaBeans to XML documents, and vice versa.</td></tr>
+        <tr><td><a href="bsf/">BSF</a></td>
+            <td>Bean Scripting Framework - interface to scripting languages, including JSR-223</td></tr>
+        <tr><td><a href="chain/">Chain</a></td>
+            <td><i>Chain of Responsibility</i> pattern implemention.</td></tr>
+        <tr><td><a href="cli/">CLI</a></td>
+            <td> Command Line arguments parser.</td></tr>
+        <tr><td><a href="codec/">Codec</a></td>
+            <td>General encoding/decoding algorithms (for example phonetic, base64, URL).</td></tr>
+        <tr><td><a href="collections/">Collections</a></td>
+            <td>Extends or augments the Java Collections Framework.</td></tr>
+        <tr><td><a href="compress/">Compress</a></td>
+            <td>Defines an API for working with tar, zip and bzip2 files.</td></tr>
+        <tr><td><a href="configuration/">Configuration</a></td>
+            <td>Reading of configuration/preferences files in various formats.</td></tr>
+        <tr><td><a href="csv/">CSV</a></td>
+            <td>Component for reading and writing comma separated value files.</td></tr>
+        <tr><td><a href="daemon/">Daemon</a></td>
+            <td>Alternative invocation mechanism for unix-daemon-like java code.</td></tr>
+        <tr><td><a href="dbcp/">DBCP</a></td>
+            <td>Database connection pooling services.</td></tr>
+        <tr><td><a href="dbutils/">DbUtils</a></td>
+            <td>JDBC helper library.</td></tr>
+        <tr><td><a href="digester/">Digester</a></td>
+            <td>XML-to-Java-object mapping utility.</td></tr>
+        <tr><td><a href="discovery/">Discovery</a></td>
+            <td>Tools for locating resources by mapping service/reference names to resource names.</td></tr>
+        <tr><td><a href="el/">EL</a></td>
+            <td>Interpreter for the Expression Language defined by the JSP 2.0 specification.</td></tr>
+        <tr><td><a href="email/">Email</a></td>
+            <td>Library for sending e-mail from Java.</td></tr>
+        <tr><td><a href="exec/">Exec</a></td>
+            <td>API for dealing with external process execution and environment management in Java.</td></tr>
+        <tr><td><a href="fileupload/">FileUpload</a></td>
+            <td>File upload capability for your servlets and web applications.</td></tr>
+        <tr><td><a href="functor/">Functor</a></td>
+            <td>A functor is a function that can be manipulated as an object, or an object representing a single, generic function.</td></tr>
+        <tr><td><a href="imaging/">Imaging (previously called Sanselan)</a></td>
+            <td> A pure-Java image library.</td></tr>
+        <tr><td><a href="io/">IO</a></td>
+            <td>Collection of I/O utilities.</td></tr>
+        <tr><td><a href="jci/">JCI</a></td>
+            <td>Java Compiler Interface</td></tr>
+        <tr><td><a href="jcs/">JCS</a></td>
+            <td>Java Caching System</td></tr>
+        <tr><td><a href="jelly/">Jelly</a></td>
+            <td>XML based scripting and processing engine.</td></tr>
+        <tr><td><a href="jexl/">Jexl</a></td>
+            <td> Expression language which extends the Expression Language of the JSTL.</td></tr>
+        <tr><td><a href="jxpath/">JXPath</a></td>
+            <td> Utilities for manipulating Java Beans using the XPath syntax.</td></tr>
+        <tr><td><a href="lang/">Lang</a></td>
+            <td>Provides extra functionality for classes in java.lang.</td></tr>
+        <tr><td><a href="launcher/">Launcher</a></td>
+            <td>Cross platform Java application launcher.</td></tr>
+        <tr><td><a href="logging/">Logging</a></td>
+            <td>Wrapper around a variety of logging API implementations.</td></tr>
+        <tr><td><a href="math/">Math</a></td>
+            <td>Lightweight, self-contained mathematics and statistics components.</td></tr>
+        <tr><td><a href="modeler/">Modeler</a></td>
+            <td>Mechanisms to create Model MBeans compatible with JMX specification.</td></tr>
+        <tr><td><a href="net/">Net</a></td>
+            <td>Collection of network utilities and protocol implementations.</td></tr>
+        <tr><td><a href="ognl/">OGNL</a></td>
+            <td>An Object-Graph Navigation Language</td></tr>            
+        <tr><td><a href="pool/">Pool</a></td>
+            <td>Generic object pooling component.</td></tr>
+        <tr><td><a href="primitives/">Primitives</a></td>
+            <td>Smaller, faster and easier to work with types supporting Java primitive types.</td></tr>
+        <tr><td><a href="proxy/">Proxy</a></td>
+            <td> Library for creating dynamic proxies.</td></tr>
+        <tr><td><a href="imaging/">Sanselan (now called Imaging)</a></td>
+            <td> A pure-Java image library.</td></tr>
+        <tr><td><a href="scxml/">SCXML</a></td>
+            <td>An implementation of the State Chart XML specification aimed at creating and maintaining a Java SCXML engine. It is capable of executing a state machine defined using a SCXML document, and abstracts out the environment interfaces.</td></tr>
+        <tr><td><a href="transaction/">Transaction</a></td>
+            <td>Implementations for multi level locks, transactional collections and transactional file access.</td></tr>
+        <tr><td><a href="validator/">Validator</a></td>
+            <td>Framework to define validators and validation rules in an xml file.</td></tr>
+        <tr><td><a href="vfs/">VFS</a></td>
+            <td>Virtual File System component for treating files, FTP, SMB, ZIP and such like as a single logical file system.</td></tr>
+     </table>
+
+    </section>
+    <section name="The Commons Sandbox">
+      <p>
+        This project also contains a workspace that is open to all
+        Apache committers. It's a place to try out new ideas and prepare
+        for inclusion into the Commons portion of the project or into
+        another Apache project. Users are free to experiment with the
+        components developed in the sandbox, but sandbox components will
+        not necessarily be maintained, particularly in their current
+        state.
+      </p>
+
+      <p>
+        <strong>See <a href="http://commons.apache.org/sandbox/">here</a> for Sandbox components.</strong>
+      </p>
+
+    </section>
+    <section name="The Commons Dormant">
+      <p>
+        These are Commons Sandbox components that have been deemed
+        inactive since they have seen little recent development activity.
+        If you wish to use any of these components, you must build them
+        yourselves. It is best to assume that these components will not be
+        released in the near future.
+      </p>
+
+      <p>
+        <strong>See <a href="http://commons.apache.org/dormant/">here</a> for Dormant components.</strong>
+      </p>
+
+    </section>
+
+    <section name="Where do I get releases?">
+      <p>
+        The individual components have independent releases. Some releases
+        for some components may be available only through the mirroring system.
+        Some releases for some components (typically the older ones) are not
+        available through the mirroring system.
+      </p>
+      <p>
+        See the individual websites listed above for the specific downloads, or use the
+        <a href="downloads/index.html">Releases</a>
+        menu option.
+      </p>
+    </section>
+
+    <section name="How do I contribute, give feedback, fix bugs and so on?">
+      <p>
+        The Commons project really needs and appreciates any contributions,
+        including documentation help, source code and feedback.
+      </p>
+      <ul>
+        <li>
+          Discussion occurs on the
+          <a href="mail-lists.html">Commons mailing list</a>.
+        </li>
+        <li>
+          Access to the SVN <strong>commons/proper</strong> repository is available both
+          <a href="http://svn.apache.org/viewvc/commons/proper/">online</a> and with a
+          <a href="http://www.apache.org/dev/version-control.html">svn client</a>.
+        </li>
+        <li>
+          Access to the SVN <strong>commons/sandbox</strong> repository is available both
+          <a href="http://svn.apache.org/viewvc/commons/sandbox/">online</a> and with a
+          <a href="http://www.apache.org/dev/version-control.html">svn client</a>.
+        </li>
+        <li>
+          Access to the SVN <strong>commons/dormant</strong> repository is available both
+          <a href="http://svn.apache.org/viewvc/commons/dormant/">online</a> and with a
+          <a href="http://www.apache.org/dev/version-control.html">svn client</a>.
+        </li>
+      </ul>
+    </section>
+    <section name="Related Components @Apache">
+      <p>
+      The Commons HttpClient project used to be a part of Commons, but is now part of
+      <a href="http://hc.apache.org/">Apache HttpComponents</a> - see 
+      <a href="http://hc.apache.org/httpclient-3.x/index.html">Jakarta Commons HttpClient</a>  
+      </p>
+      <p>
+        Some other Apache Projects also have commons subprojects:
+        <ul>
+          <li>
+            <a href='http://ws.apache.org/commons/'> <strong>commons@ws.apache.org</strong>
+              - reusable library components for web service development.
+            </a>
+          </li>
+          <li>
+            <a href='http://xml.apache.org/commons/'> <strong>commons@xml.apache.org</strong>
+              - common packaging for standards code plus xml-related utilities.
+            </a>
+          </li>
+        </ul>
+        So, if you can't find what you need here, you might like to take a look there.
+        Some components which started out here have migrated to these other places.
+      </p>
+    </section>
+  </body>
+</document>

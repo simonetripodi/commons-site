@@ -1,0 +1,348 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+
+ <properties>
+  <title>Building Components</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+ </properties>
+
+ <body>
+  <section name='Introduction'>
+    <p>
+    This document provides information on setting up and executing builds for
+    Apache Commons components and web sites. The contents include best
+    practices and conventions that commons components should follow.
+    This information should be useful to committers setting up
+    new components as well as to volunteers who want to build commons
+    components or web sites from source or to contribute patches to the build
+    artifacts.
+    </p>
+    <p>
+    The assumption throughout is that we are working with a component named
+    "Apache Commons Foo" that uses Maven as its build system, both for
+    distribution binaries and for the web site.  Contributions of instructions
+    covering Ant-based builds are welcome! 
+    </p>
+    <p>
+    Some knowledge of Maven is assumed in this document.  Please refer to the
+    <a href="http://maven.apache.org/maven-1.x/using/index.html">maven user guide</a> and
+    <a href="http://maven.apache.org/maven-1.x/reference/index.html">reference</a>
+    for more information. This document is concerned with using version 1 of maven.
+    See <a href="building.html">here</a> for Maven 2 details.
+    </p>
+  </section>
+
+  <section name='Local environment setup'>
+    <p>
+    To build Apache Commons components or web sites, you need to have Maven
+    installed and the project source files checked out locally. You may also
+    need to have some local build properties specified.  This section describes
+    the local setup required. 
+    </p>
+    <subsection name='Getting and installing Maven'>
+      <p>
+      Follow the 
+      <a href="http://maven.apache.org/maven-1.x/start/download.html">
+      Maven download instructions</a> to download and install Maven. You will
+      need Maven version 1.0.2.
+      </p>
+      <p>
+      You need the maven-xdoc-plugin version 1.9.2 to build a Apache Commons
+      web site. If you don't have that version, you need to upgrade. To
+      automatically install the plugin, type the following on a single line:
+      <source>
+      maven plugin:download
+        -Dmaven.repo.remote=http://www.ibiblio.org/maven
+        -DgroupId=maven
+        -DartifactId=maven-xdoc-plugin
+        -Dversion=1.9.2
+      </source>
+      For a manual installation, you can download the plugin here:
+      <a href="http://www.apache.org/dyn/closer.cgi/java-repository/maven/plugins/maven-xdoc-plugin-1.9.2.jar">
+      http://www.apache.org/dyn/closer.cgi/java-repository/maven/plugins/maven-xdoc-plugin-1.9.2.jar</a>
+      </p>
+    </subsection>
+    <subsection name='Checking out the commons sources'>
+      <p>
+      Follow the 
+      <a href="http://commons.apache.org/svninfo.html">
+      commons subversion instructions</a> to check out the commons source
+      files. If you want to build commons component web sites, you need to have
+      the <code>commons-build</code> module checked out as a peer to whatever 
+      component(s) you are trying to generate the site for. If you check out
+      the full set of "trunks" using the svn externals "trunks-proper" or
+      "trunks-sandbox" this will happen automatically.
+      </p>
+    </subsection>
+    <subsection name='Configuring local properties'>
+      <p>
+      As a general rule, dependencies on local properties (things not specified
+      in <code>project.xml</code> or <code>project.properties</code>) should be
+      avoided. There are a few things, however, that are specific to individual
+      developers that may need to be set locally. Generally, only committers
+      need to set local properties.  As documented in the
+      <a href="http://maven.apache.org/maven-1.x/reference/properties.html">
+      Maven properties reference</a>, Maven looks for property values first in
+      <code>project.properties</code> in the project's base directory (where
+      <code>project.xml</code> lives), then in <code>build.properties</code> if
+      that exists in the same directory, then in ${user.home}/build.properties
+      and finally in System properties. Values are successively overridden if
+      they occur in multiple places in this list.
+      </p>
+      <p>
+      It may be convenient for committers to set the
+      following properties in ${user.home}/build.properties, which will make
+      them apply to all Maven projects that they work on.
+      <pre>
+      maven.username (Apache user name, for site deployment)
+      maven.repo.apache.releases.username   (Apache user name, for releases)
+      maven.repo.apache.releases.privatekey (path to pgp signing key)
+      </pre>
+      If you work only on Commons projects, you can add
+      <code> maven.remote.group=commons </code>
+      otherwise this will need to be specified for each project that you want
+      to use Maven to deploy.
+      </p>
+    </subsection> 
+  </section>
+
+  <section name='Maven POM (project.xml) configuration'>
+  <p>
+  This section describes the key elements in the Maven POM and how the 
+  <a href="http://svn.apache.org/repos/asf/commons/proper/commons-build/trunk/samples/project.xml.sample">
+  sample <code>project.xml</code></a> file needs to be modified or customized
+  for different components.
+  </p> 
+    <subsection name='Top level elements'>
+      <p>
+      The following top-level elements of the POM should be changed to reflect
+      the individual component.  Elements not listed below should keep the
+      values in the sample file.
+      <table><tr><th>Element</th><th>Value</th><th>Example
+      (value to replace)</th></tr>
+      <tr><td>name</td><td>The capitalized name of the component</td>
+      <td>Foo</td></tr>
+      <tr><td>groupId</td><td>commons-component (where "component" is the
+      uncapitalized name of the component)</td><td>commons-foo</td></tr>
+      <tr><td>artifactId</td><td>commons-component (where "component" is the
+      uncapitalized name of the component)</td><td>commons-foo</td></tr>
+      <tr><td>currentVersion</td><td>Current version under development.
+      Development versions should always use the suffix "-SNAPSHOT".
+      Maven handles these SNAPSHOTs in a special way.</td>
+      <td>1.0-SNAPSHOT</td></tr>
+      <tr><td>inceptionYear</td><td>Year when the component was created</td>
+      <td>2005</td></tr>
+      <tr><td>shortDescription</td><td>Apache Commons &lt;capitalized name&gt;
+      </td><td>Apache Commons Foo</td></tr>
+      <tr><td>description</td><td><strong>Brief</strong> description of what
+      the component is</td><td>A Foo thing</td></tr>
+      <tr><td>logo</td><td>Path to component logo image</td>
+      <td>/images/logo.png</td></tr>    
+      </table>
+      </p>
+    </subsection>
+    <subsection name='Addtional POM elements'>
+      <p>
+      In addition to the basic project information in the preceeding section,
+      the following POM elements need to be customized or at least verified for
+      individual commons components.
+      <table><tr><th>Element</th><th>Comments</th></tr>
+      <tr><td>versions</td><td>This list should include an entry for each
+      official release of the component.  The <code>id</code> and 
+      <code>name</code> for each version should be the release number, e.g.,
+      "1.2".  The <code>tag</code> should be the name of the svn tag
+      corresponding to the sources used to build the release.</td></tr>
+      <tr><td>developers</td><td>This list should include all committers who
+      work on the component. Each committer's first commit to the component
+      should include adding him/herself to the developers list.</td></tr>
+      <tr><td>contributors</td><td>Most commons components have done away with
+      @author tags, so the way we acknowledge contributors is by adding them to
+      this list, which will appear on the Maven-generated web site. Make sure
+      that you have the correct spelling of contributors' names and do not
+      include email addresses unless contributors specifically authorize this.
+      </td></tr>
+      <tr><td>dependencies</td><td>Minimize these ;-) and group them with
+      comments designating them as compile-time, run-time and test-only if
+      these distinctions apply.</td></tr>
+      <tr><td>build</td><td>The sample file assumes the standard directory
+      layout, with source code in <code>src/jave</code> and tests in 
+      <code>src/test</code>. It also assumes that test classes have names that
+      end in "Test", e.g. "FooManagerTest.java" and that abstract test classes
+      have names that end in "AbstractTest", e.g., "FooFooerAbstractTest." Do
+      <strong>not</strong> remove the <code>resources</code> element that
+      includes <code>NOTICE.TXT</code>.</td></tr>
+      <tr><td>reports</td><td>Reports published to the live web site should be
+      limited to the short list in the sample POM.  The 
+      <code>maven-changes-plugin</code> should only be used if the component
+      maintains a <code>changes.xml</code> file in <code>/xdocs</code> 
+      following the format described in the
+      <a href="http://maven.apache.org/maven-1.x/plugins/changes/">
+      Maven changes plugin documentation</a></td></tr></table>
+      </p>
+    </subsection>
+  </section>
+
+  <section name='Property configuration'>
+    <p>
+    There is very little that needs to be customized for individual components
+    in the
+    <a href="http://svn.apache.org/repos/asf/commons/proper/commons-build/trunk/samples/project.properties.sample">
+    sample <code>project.properties</code> file</a>. The table below calls out
+    a few properties which individual components may wish to modify.  The
+    deployment and site generation properties (which should not be changed) are
+    discussed in other sections below.
+    <table><tr><th>Property</th><th>Comments</th></tr>
+    <tr><td>maven.test.skip</td><td>Set to <code>true</code> to skip unit tests
+    during build. Useful when testing build changes, but should not be checked
+    in with value set to <code>true.</code></td></tr>
+    <tr><td>maven.test.failure</td><td>Set this to <code>false</code> to allow
+    the build to succeed when unit tests fail. This should not be checked in
+    with the value set to <code>false.</code></td></tr>
+    <tr><td>maven.checkstyle.properties</td><td>If the component uses the
+    checkstyle plugin, this property should be set to the location of the
+    checkstyle rules file.</td></tr>
+    <tr><td>maven.javadoc.links</td><td>Components should add links to any
+    javadoc resources beyond the jdk here.</td></tr></table>
+    </p>
+  </section>
+
+  <section name='Generating and publishing the web site'>
+    <subsection name='Generating the site'>
+    <p>
+    Use <code>maven site:generate</code> to generate the component web site
+    locally. Then review the generated html in <code>target/docs.</code>
+    Navigation is specified in <code>xdocs/navigation.xml.</code> The
+    <a href="http://svn.apache.org/repos/asf/commons/proper/commons-build/trunk/samples/navigation.xml.sample">
+    sample navigation file</a> refers to entities defined in 
+    <code>../../commons-build/menus/menus.dtd,</code> so, as mentioned above,
+    commons-build has to be checked out as a peer to the component whose web
+    site you are building. The menu structure in the sample is standard for
+    commons components, though some elements (e.g, User's Guide) may not be
+    present for all components.  At the very least, each component
+    <strong>must</strong> include a link to the javadoc for the most recent
+    release.  Links to Javadoc for the last release and for the current
+    development branch should also be included.
+    </p>
+    </subsection>
+    <subsection name='Updating the public site'>
+    <p>
+    Once you have successfully generated the web site, reviewed it
+    locally and checked in any xdocs or configuration changes, you can deploy
+    it using <code>maven site:sshdeploy.</code>  For this to work, the 
+    following conditions need to be satisfied: <ol>
+    <li> The <code>&lt;siteAddress&gt;</code> and 
+    <code>&lt;siteDirectory&gt;</code> POM elements have to have the values
+    <code>people.apache.org</code> and 
+    <code>/www/commons.apache.org/foo/</code> respectively (will be the
+    case if you do not change the settings in <code>project.xml.sample.</code>)
+    </li>
+    <li> You have to be a member of the <code>commons</code> unix group 
+    (should happen when you are set up as a commons committer).</li>
+    <li> You have an ssh key set up. Follow the instructions on the
+    <a href="http://www.apache.org/dev/user-ssh.html">
+    Apache SSH Access page</a> to get this set up correctly.</li></ol>
+    Assuming the second condition above is met, you can also deploy sites
+    manually using scp or by tarring / zipping and extracting the content
+    to the path above on <code>people.apache.org.</code>  In either case,
+    The content will be rsynced within a few hours to the production
+    web server(s).  Note that because of the rsync delay, 
+    <strong>your changes will not appear immediately on the live site.</strong>
+    </p>
+    </subsection>     
+  </section>
+
+  <section name='Deploying jars'>
+    <p>
+    Maven's jar plugin supports automated deployment of jars to local or remote
+    Maven repositories.  This powerful feature makes distribution easy, but
+    also makes inadvertent deployment of development jars possible. The
+    setup in 
+    <a href="http://svn.apache.org/repos/asf/commons/proper/commons-build/trunk/samples/project.properties.sample">
+    <code>project.properties.sample</code></a> ensures that this does not
+    happen.  This section explains how to deploy jars using Maven at apache.
+    </p>
+    <subsection name='Repository structure'>
+      <p>
+      There are three Maven repositories that Apache committers should be aware
+      of.  The table below describes each of these repositories.
+      <table><tr><th>External Repository URL</th><th>Function</th></tr>
+      <tr><td>http://people.apache.org/repository/</td>
+      <td>deployment location for Apache "snapshot" jars. This repository
+      exists for internal Apache use only. External projects should
+      <strong>not</strong> use this repository for dependency resolution and
+      Apache projects should <strong>not</strong> release code with dependencies on
+      snapshot jars.</td></tr>
+      <tr><td>http://www.apache.org/dist/java-repository/</td>
+      <td>deployment location for <strong>released</strong> Apache jars. 
+      Should not be accessed for dependency resolution by Maven builds. Contents
+      are rsynced to ibiblio.</td></tr>
+      <tr><td>http://www.ibiblio.org/maven/</td>
+      <td>Default remote repository used by Maven. Apache release jars are
+      rsynced every few hours from java-repository to this repository.</td></tr>
+      </table>
+      </p>
+    </subsection>
+    <subsection name='Deploying release jars'>
+      <p>
+      The instructions here automate the process described in step 8 of the
+      <a href="releases/release.html">
+      Apache Commons Release Instructions.</a> It is essential that only
+      <strong>release</strong> jars be deployed in this way and that the
+      <code>artifactId</code> in <code>project.xml</code> be set correctly.
+      </p>
+      <p>
+      To deploy a release jar to <code>java-repository</code>, you need to
+      have an ssh key set up (see site deployment section above) and you need
+      to set the <code>maven.repo.list</code> property to refer to 
+      <code>java-repository.</code>  The safest way to do this (to minimize
+      risk of inadvertent production deployment) is to rely on the setup in
+      <a href="http://svn.apache.org/repos/asf/commons/proper/commons-build/trunk/samples/project.properties.sample">
+      project.properties.sample</a>, which leaves <code>java-repository</code>
+      off of the repo list, so you have to overrride the list on the command
+      line: 
+      <source>maven -Dmaven.repo.list=apache.releases jar:deploy</source>
+      For this to work, <code>apache.releases</code> has to be configured as in
+      <code>project.properties.sample</code> to point to 
+      <code>java-repository.</code> Jars deployed to 
+      <code>java-repository</code> will be rsynced to <code>ibiblio</code>
+      within a few hours. Immediately after deployment, you should download
+      the jar and verify that: <ul>
+      <li>the name of the jar is correct (matches release)</li>
+      <li>the md5 checksum of the jar matches the release version</li>
+      <li>the md5 checksum of the jar is correct </li>
+      <li>the manifest of the jar is correct</li>
+      </ul>
+      As stated in the <a href="releases/release.html">
+      release instructions</a>, please make sure to update the currentVersion to 
+      end in <code>-SNAPSHOT</code> after pushing out the release jar. 
+      </p>
+    </subsection>
+    <subsection name='Deploying snapshot jars'>
+      <p>
+      Assuming the setup in <code>project.properties.sample</code>, and 
+      correctly set currectVersion (should end in
+      <code>-SNAPSHOT</code>) the following command can be used to deploy a 
+      "snapshot" or "development build" jar to the Apache snapshot repository:
+      <source>maven jar:deploy-snapshot</source>
+      </p>
+    </subsection>
+  </section>
+ </body>
+</document>

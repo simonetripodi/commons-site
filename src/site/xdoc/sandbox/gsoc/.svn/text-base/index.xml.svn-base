@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+  <properties>
+    <title>GSoC space in Commons Sandbox</title>
+    <author email="dev@commons.apache.org">Commons Documentation Team</author>
+  </properties>
+  <body>
+
+    <section name="The Apache Commons Sandbox - Google Summer of Code Projects">
+
+      <p>
+        <a href="http://code.google.com/soc/">Google Summer of Code</a><sup>TM</sup>
+        is a global program that offers student developers stipends to write code for various
+        open source software projects. The Apache Software Foundation participates in
+        the program every year.
+      </p>
+      <p>
+        Some of these projects' websites are listed below. These are listed by their year of
+        participation:
+        <ul>
+          <li><a href="2010/index.html">2010 projects</a></li>
+        </ul>
+      </p>
+
+    </section>
+
+    <section name="Status of the GSoC Projects">
+
+      <p>
+        Please ask on the Commons developers <a href="../../mail-lists.html">mailing list</a>
+        for the status of any of GSoC projects in the Commons Sandbox. Any development
+        discussions or suggestions are also welcome on the developers mailing list.
+      </p>
+      <p>
+        A <a href="../index.html">Commons Sandbox</a> component is considered inactive if there
+        is no active development for a sustained period of time.
+      </p>
+
+    </section>
+
+  </body>
+</document>

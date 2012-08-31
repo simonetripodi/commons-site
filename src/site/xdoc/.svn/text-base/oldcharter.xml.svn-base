@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+
+ <properties>
+  <title>Old Charter</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+ </properties>
+
+ <body>
+
+<section name="Charter (1.1)">
+
+<p>
+The following charter for Jakarta Commons was approved by the
+Jakarta Project Management Committee (PMC) on May 19, 2004. The original
+version, <a href="http://svn.apache.org/viewvc/*checkout*/jakarta/commons/current/charter.html?rev=148840">1.0</a>, was approved by the PMC on March 19, 2001. On June 20, 2007, the Apache Board voted to promote the Jakarta Commons subproject to Apache Commons. 
+</p>
+
+<strong>(0) rationale</strong>
+
+<p>
+Apache-Java and Jakarta originally hosted product-based subprojects,
+consisting of one major deliverable. The Java language however is
+package-based, and most of these products have many useful utilities.
+Some products are beginning to break these out so that they can be used
+independently. A Jakarta subproject to solely create and maintain
+independent packages is proposed to accelerate and guide this process.
+</p>
+
+<strong>(1) scope of the subproject</strong>
+
+<p>
+The subproject shall create and maintain packages written in the Java
+language, intended for use  in server-related development, and designed
+to be used independently of any larger product  or framework.
+Each package will be managed in the same manner
+as a larger Jakarta product.  To further this goal, the subproject
+shall also host a workplace for Jakarta committers.
+</p>
+
+<p>
+(1.1) the sandbox
+</p>
+
+<p>
+The subproject will host a CVS repository available to all Apache
+committers as a workplace for new packages or other projects.
+</p>
+
+<strong>(2) identify the initial set of committers</strong>
+<p>
+Morgan Delagrange<br/>
+Ted Husted<br/>
+Conor MacNeill<br/>
+Geir Magnusson Jr.<br/>
+Costin Manolache<br/>
+Remy Maucherat<br/>
+Craig R. McClanahan<br/>
+Ignacio J. Ortega<br/>
+Rodney Waldhoff<br/>
+David Weinrich
+</p>
+
+</section>
+
+<section name="Guidelines">
+
+<p> Note :
+<ul>
+  <li>
+     <i>is, has, will, shall, must</i> - required.
+  </li>
+  <li>
+    <i>may, should, are encouraged </i>- optional but recommended.
+  </li>
+</ul>
+</p>
+
+<p>
+<ol>
+  <li>
+     The primary unit of reuse and release is the package.
+  </li>
+
+  <li>
+     The package library is not a framework but a collection
+     of components designed to be used independently.
+  </li>
+
+  <li>
+     Each package must have a clearly defined purpose,
+     scope, and API -- Do one thing well, and keep your contracts.
+  </li>
+
+ <li>Each package is treated as a product in its own right.
+    <ol>
+      <li>Each package has its own status file, release schedule,
+      version number, QA tests, documentation, mailing list, bug category, and individual JAR.
+      </li>
+      <li>
+        Each package must clearly specify any external dependencies,
+        including any other Commons packages, and the earliest JDK version
+        required.
+        <ol>
+          <li>External dependencies on optional and third-party
+          codebases should be minimized.
+          </li>
+          <li>All necessary dependencies  must be recorded in the
+          MANIFEST.MF file of the package JAR, in the manner recommended
+          in the JDK 1.3 documentation describing 'system extensions'
+          </li>
+        </ol>
+      </li>
+      <li>
+        Each package must maintain a list of its active committers in its status file.
+      </li>
+    </ol>
+  </li>
+  <li>
+     The packages should use a standard scheme for versioning,
+     QA tests, and directory layouts, and a common format for
+     documentation and Ant build files.
+  </li>
+  <li>
+     The packages should fit within a unified package hierarchy.
+  </li>
+  <li>
+     In general, packages should provide an interface and one or
+     more implementations of that interface, or implement another
+     interface already in use.
+    <ul>
+      <li>
+      The packages should have boring functional names.
+      Implementations may choose more 'exciting' designations.
+      </li>
+    </ul>
+  </li>
+  <li>
+    Packages are encouraged to either use JavaBeans as core objects,
+    a JavaBean-style API, or to provide an optional JavaBean wrapper.
+  </li>
+  <li>
+      External configuration files are discouraged, but if required,
+      XML format files are preferred for configuration options.
+  </li>
+  <li>
+     Each package will be hosted on its own page on the subproject Web site,
+     and will also be indexed in a master directory.
+  </li>
+  <li>
+       The subproject will also host a top-level 'general' mailing list
+       in addition to any lists for specific packages.
+  </li>
+  <li>The subproject will also provide a single JAR of all stable package releases. It may also provide a second JAR with a subset of only JDK 1.1 compatible releases. A gump of nightly builds will also be provided.</li>
+  <li>Volunteers become committers to this subproject in the same way they are entered to any Jakarta subproject. Being a committer in another Jakarta subproject is not a prerequisite.</li>
+  <li>Each committer has karma to all the packages, but committers are required to add their name to a package's status file before their first commit to that package.</li>
+  <li>New packages may be proposed to the Jakarta Commons mailing list. To be
+      accepted, a package proposal must receive majority approval of the
+      subproject committers. Proposals are to identify the rationale for the
+      package, its scope, its interaction with other packages and products, the
+      Commons resources, if any, to be created, the initial source from which
+      the package is to be created, the coding conventions used for the package
+      (if different from the Sun coding conventions), and the initial set of
+      committers.
+    <ul>
+      <li>As stated in the Jakarta guidelines, an action requiring majority approval must receive at least 3 binding +1 votes and more +1 votes than -1 votes.</li>
+    </ul>
+  </li>
+  <li>It is expected that the scope of packages may sometimes overlap.</li>
+  <li>Anyone may propose a new package to the Commons, and list themselves as the initial committers for the package. The vote on the proposal is then also a vote to enter new committers to the subproject as needed.</li>
+  <li>A CVS repository will be available to all Apache committers as a  workplace for new packages or other projects.
+  Before release to the public,
+ code or documentation developed here must be sponsored by Jakarta subproject.
+ The sponsoring subproject(s) will distribute the code or documentation along with the
+    rest of their codebase.</li>
+  <li>Each Commons component should use an internally consistent and documented
+      coding style. When the source code for a component originates in a
+      pre-existing code base outside of Commons, the coding style of that code
+      base may be retained at the discretion of the initial committers. If a
+      component does not specify its coding style, the Sun Coding Convention
+      guidelines are assumed.
+  </li>
+  <li>The subproject catalog will also list packages and resources available to the public related to other Jakarta subprojects and ASF projects.</li>
+  <li>As a Jakarta subproject, the Commons adopts all other guidelines and procedures of Jakarta and the Apache Software Foundation, as they may be amended from time to time.</li>
+</ol>
+</p>
+</section>
+
+<section  name="Example Package Proposal">
+
+<strong>Proposal for Database Connection Pool Package</strong>
+
+<p>(0) rationale</p>
+
+<p>
+Many Jakarta products support interaction with a relational database. Creating a new connection for each user  can be time consuming (often requiring multiple seconds of clock time), in order to perform a database transaction that might take milliseconds. Opening a connection per user can be unfeasible in a
+publicly-hosted Internet application where the number of simultaneous users can be be very large. Accordingly, developers often wish to share a "pool" of open connections between all of the application's current users. The number of users actually performing a request at any given time is usually a very small percentage of the total number of active users, and during request processing is the only time that a database connection is required. The application itself logs into the DBMS, and a handles any user account issues internally.
+</p>
+
+<p>There are several Database Connection Pools already available, both within Jakarta products and elsewhere.
+A Commons package would give committers an opportunity to coordinate their efforts to
+create and maintain a efficient, feature-rich package
+under the ASF license.
+</p>
+
+<p>(1) scope of the package</p>
+
+<p>
+The package shall create and maintain a database connection pool package written in the Java language to be distributed under the ASF license. The package shall be available as a pseudo-JDBC driver and via a DataSource interface. The package shall
+also support multiple logins to multiple database systems, reclamation of stale or dead connections, testing for valid connections, PreparedStatement pooling, and other features.</p>
+<p>(1.5) interaction with other packages</p>
+<p>Subclasses of the package should also be able to :</p>
+  <ul>
+    <li>be configured via an external file (e.g. Turbine), and</li>
+    <li>expose its status, exceptions, or other events to an external logging system (e.g. Log4)..</li>
+  </ul>
+<p>(2) identify the initial source for the package</p>
+<p>The initial codebase was contributed by Rodney Waldhoff from a working project and can be distributed under the Apache license. The source is available as dbpool.jar from ...</p>
+<p>(2.1) identify the base name for the package</p>
+<p>org.apache.commons.dbcp</p>
+<p>(2.2) identify the coding conventions for this package</p>
+<p>The code uses the conventions from the Jakarta Turbine package.</p>
+<p>(3) identify any Jakarta-Commons resources to be created</p>
+<p>(3.1) mailing list</p>
+<p>Until traffic justifies, the package will use the Jakarta-Commons list for communications.</p>
+<p>(3.2) CVS repositories</p>
+<p>For the time being, the package will use a root branch of the Jakarta-Commons CVS.</p>
+<p>(3.3) Bugzilla</p>
+<p>The package should be listed as a component of under the Jakarta-Commons Bugzilla entry.</p>
+<p>(4) identify the initial set of committers to be listed in the Status File.</p>
+<p>
+Morgan Delagrange<br/>
+Geir Magnusson Jr.<br/>
+Craig R. McClanahan<br/>
+Rodney Waldhoff<br/>
+David Weinrich
+</p>
+
+</section>
+
+<section name="FAQ">
+<p><b>What are the actual requirements for a Commons package?</b></p>
+
+<p>
+Most of the guidelines are advisory and meant to describe 'best practices'.
+The hard requirements boil down to 'clearly declare your API and dependencies'.
+Or, taken from the guidelines:
+</p>
+
+<blockquote>
+<p>3. Each package <b> must</b> have a clearly defined purpose, scope, and API --
+Do one thing well, and keep your contracts.</p>
+
+<p>4.1. Each package <b> must</b> clearly specify any external dependencies, including any other Commons packages, and the earliest JDK version required.</p>
+<p>4.1.2. All necessary dependencies <b>  must</b> be recorded in the MANIFEST.MF file of the package JAR, in the manner recommended in the JDK 1.3 documentation describing 'system extensions'.</p>
+</blockquote>
+<p>Of course, the other requirement is that the authors submit a proposal to the Commons committers for approval.</p>
+<p><b>Why not have a separate CVS tree for each package?</b></p>
+<p>It's possible that we may, but the decision should be deferred until we have more packages to manage.</p>
+<p>For now, we just ask that a Commons committer enter their name in the Status File of a package before making their first commit/
+</p>
+
+<p><b>Should other Jakarta subprojects move their utility packages to the Commons?</b></p>
+
+<p>They are welcome to do so. If they would like to experiment with refactoring a package outside their own CVS tree, they can setup shop in the Commons sandbox. Any Apache committer is entitled to write access to this CVS repository upon request. They
+could then decide to propose the package to the Commons, and thereby become committers to the Commons, or to move it back to their own CVS.</p>
+
+<p><b>Why not just enroll all the Jakarta committers in the Commons?</b></p>
+
+<p>If Jakarta adopts an open-door policy for all its subprojects, then of course the Commons will follow suit.</p>
+
+<p>We do have an open-door policy for the sandbox CVS (jakarta-commons-sandbox). Any Apache committer is entitled to write access to the sandbox upon request, no vote required, no questions asked. Just subscribe to jakarta-commons-sandbox, and request
+authorization.</p>
+
+<p><b>Why not just do this within Avalon, or another existing subproject?</b></p>
+
+<p>Avalon is a large subproject that is being refactored. It's possible that the charter of one of the ensuing pieces may overlap with the Commons.</p>
+
+<p>The focus of the Commons is squarely and solely on developing packages that can be reused by multiple products, both within and without Jakarta. To garner the interest of committers, it is important that the Commons and each of its packages be perceived as an
+independent entity. Since this is a volunteer meritocracy, the perception of committers is vital. No subproject can succeed without the earnest support of individual committers.</p>
+
+<p>It is our firm position that the Commons will attract more committers on its own than if it were aligned with any existing subproject. What "committers will commit to" has to be the prime consideration. Darwin has been trying to tell us that; it's time we listened.</p>
+
+</section>
+
+<section name="Resources">
+
+<p>
+<ul>
+  <li><b>Jakarta Guidelines</b></li>
+  <li>- <a href="http://jakarta.apache.org/site/guidelines.html">http://jakarta.apache.org/site/guidelines.html</a></li>
+  <li><b>Code Conventions for the Java Programming Language</b><br/>
+    - <a href="http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html">http://java.sun.com/docs/codeconv/html/CodeConvTOC.doc.html</a></li>
+  <li><b>Javadoc Tool Home Page</b><br/>
+    - <a href="http://java.sun.com/j2se/javadoc/">http://java.sun.com/j2se/javadoc/</a></li>
+  <li><b>Elements of Java Style - 6. Packaging Conventions</b><br/>
+    - <a href="http://www.ambysoft.com/elementsJavaStyle.html">http://www.ambysoft.com/elementsJavaStyle.html</a></li>
+</ul>
+</p>
+  <p><b>From the Elements of Java Style - 6. Packaging Conventions</b></p>
+  <p><i>Rules and Principles only - commentary omitted (<a href="http://www.amazon.com/exec/obidos/ISBN=0521777682/">buy the book!</a>)</i></p>
+  <p>104. Place types that are commonly used, changed, and released together, or mutually dependant on each other, into the same package.</p>
+  <ul>
+    <li><i>The Common Reuse Principle</i> - A package consists of classes you reuse together. If you use one of the classes in the package, you use all of them.</li>
+    <li><i>The Common Closure Principle</i> - A package consists of classes, all closed against the same kind of changes. A change that affects the package affects all the classes in that package</li>
+    <li><i>The Reuse/Release Equivalence Principle</i> - The unit of reuse is the unit of release. Effective reuse requires tracking of releases from a change control system. The package is the effective unit of reuse and release.</li>
+    <li><i>The Acyclic Dependencies Principle</i> - The dependency structure between packages must be a direct acyclic graph; there must be no cycles in the dependency structure.</li>
+  </ul>
+  <p>105. Isolate volatile classes and interfaces in separate packages.</p>
+  <p>106. Avoid making packages that are difficult to change dependent on packages that are easy to change.</p>
+  <ul>
+    <li><i>The Stable Dependencies Principle</i> - The dependencies between packages should be orientated in the direction of increasing stability. A package should only depend on packages more stable than it is.</li>
+  </ul>
+  <p>107. Maximize abstraction to maximize stability.</p>
+  <ul>
+    <li><i>The Stable Abstractions Principle </i>- The stability exhibited by a package is directly proportional to its level of abstraction. The more abstract a package is, the most stable it tends to be. The more concrete a package is, the more unstable
+      it tends to be.</li>
+  </ul>
+  <p>108. Capture high-level design and architecture as stable abstractions organized into stable packages.</p>
+  <p><i>For more about these rules, and 103 others - <a href="http://www.ambysoft.com/elementsJavaStyle.html">get the book</a> - highly recommended.</i></p>
+
+</section>
+</body>
+</document>

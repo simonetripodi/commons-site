@@ -1,0 +1,90 @@
+<?xml version="1.0" ?>
+  <!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements. See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version
+    2.0 (the "License"); you may not use this file except in compliance
+    with the License. You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+    applicable law or agreed to in writing, software distributed under
+    the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+    OR CONDITIONS OF ANY KIND, either express or implied. See the
+    License for the specific language governing permissions and
+    limitations under the License.
+  -->
+
+<document>
+  <properties>
+    <title>Apache Commons</title>
+    <author email="dev@commons.apache.org">Commons Documentation Team</author>
+  </properties>
+  <body>
+    <section name="Downloads">
+      <p>
+        Binary and source releases and links into the
+        <a href="http://archive.apache.org/dist/commons/">archives</a>
+        may be obtained by selecting a project below
+      </p>
+
+      <subsection name="Release Announcements">
+         <p>
+          We recommend that you subscribe to the Apache
+          <a href="../mail-lists.html">Announce</a>
+          mailing list to be notified when releases are made by the Commons project.
+          Releases are also announced to the User and Developer lists.
+        </p> 
+      </subsection>
+
+      <subsection name="Downloads">
+         <!-- Should agree with list in ../../site.xml and ../index.xml and ../components.xml -->
+         <ul>
+          <li><a href="../attributes/download_attributes.cgi">Attributes</a></li>
+          <li><a href="../bcel/download_bcel.cgi">BCEL</a></li>
+          <li><a href="../beanutils/download_beanutils.cgi">Beanutils</a></li>
+          <li><a href="../betwixt/download_betwixt.cgi">Betwixt</a></li>
+          <li><a href="../bsf/download_bsf.cgi">BSF</a></li>
+          <li><a href="../chain/download_chain.cgi">Chain</a></li>
+          <li><a href="../cli/download_cli.cgi">CLI</a></li>
+          <li><a href="../codec/download_codec.cgi">Codec</a></li>
+          <li><a href="../collections/download_collections.cgi">Collections</a></li>
+          <li><a href="../configuration/download_configuration.cgi">Configuration</a></li>
+          <li><a href="../csv/download_csv.cgi">CLI</a></li>
+          <li><a href="../daemon/download_daemon.cgi">Daemon</a></li>
+          <li><a href="../dbcp/download_dbcp.cgi">DBCP</a></li>
+          <li><a href="../dbutils/download_dbutils.cgi">DbUtils</a></li>
+          <li><a href="../digester/download_digester.cgi">Digester</a></li>
+          <li><a href="../discovery/download_discovery.cgi">Discovery</a></li>
+          <li><a href="../el/download_el.cgi">EL</a></li>
+          <li><a href="../email/download_email.cgi">Email</a></li>
+          <li><a href="../exec/download_exec.cgi">Exec</a></li>
+          <li><a href="../fileupload/download_fileupload.cgi">FileUpload</a></li>
+          <li><a href="../functor/download_functor.cgi">Functor</a></li>
+          <li><a href="../imaging/download_imaging.cgi">Imaging (was Sanselan)</a></li>
+          <li><a href="../io/download_io.cgi">IO</a></li>
+          <li><a href="../jci/download_jci.cgi">JCI</a></li>
+          <li><a href="../jcs/DownloadPage.html">JCS</a></li>
+          <li><a href="../jelly/download_jelly.cgi">Jelly</a></li>
+          <li><a href="../jexl/download_jexl.cgi">JEXL</a></li>
+          <li><a href="../jxpath/download_jxpath.cgi">JXPath</a></li>
+          <li><a href="../lang/download_lang.cgi">Lang</a></li>
+          <li><a href="../launcher/download_launcher.cgi">Launcher</a></li>
+          <li><a href="../logging/download_logging.cgi">Logging</a></li>
+          <li><a href="../math/download_math.cgi">Math</a></li>
+          <li><a href="../modeler/download_modeler.cgi">Modeler</a></li>
+          <li><a href="../net/download_net.cgi">Net</a></li>
+          <li><a href="../pool/download_pool.cgi">Pool</a></li>
+          <li><a href="../primitives/download_primitives.cgi">Primitives</a></li>
+          <li><a href="../proxy/download_proxy.cgi">Proxy</a></li>
+          <li><a href="../imaging/download_sanselan.cgi">Sanselan (see Imaging)</a></li>
+          <li><a href="../scxml/download_scxml.cgi">SCXML</a></li>
+          <li><a href="../transaction/download_transaction.cgi">Transaction</a></li>
+          <li><a href="../validator/download_validator.cgi">Validator</a></li>
+          <li><a href="../vfs/download_vfs.cgi">VFS</a></li>
+        </ul>
+      </subsection>
+
+    </section>
+  </body>
+</document>

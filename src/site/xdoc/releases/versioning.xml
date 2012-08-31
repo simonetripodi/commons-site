@@ -1,0 +1,524 @@
+<?xml version="1.0" ?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<!-- $Id: versioning.xml 932074 2010-04-08 19:39:55Z sebb $ -->
+<document>
+ <properties>
+  <title>Versioning Guidelines</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+  <author email="morgand@apache.org">Morgan Delagrange</author>
+  <author email="rwaldhoff@apache.org">Rodney Waldhoff</author>
+ </properties>
+ <body>
+  <section name="Overview">
+   <p>This document provides:</p>
+   <ul>
+    <li>
+     a set of guidelines intended to help the Apache Commons
+     team balance the need to provide a stable interface to
+     clients with the growth and evolution of components over
+     time,
+    </li>
+    <li>
+     a language for describing the changes to a component
+     and the types of incompatibilities such changes may
+     create,
+    </li>
+    <li>
+     and a protocol for communicating those changes and
+     incompatibilities to users and developers.
+    </li>
+   </ul>
+  </section>
+  <section name="Interface Types">
+   <p>
+    We identify three distinct categories of interfaces or APIs
+    within a component: <em>external</em>, <em>internal</em>
+    and <em>private</em>.
+   </p>
+   <subsection name="The External Interface">
+    <p>
+     The <em>external</em> interface of component is composed of the
+     public-facing classes, interfaces, methods and attributes
+     provided by the component--those that are likely to be
+     used by clients to the component.
+    </p>
+    <p>
+     For obvious reasons, we try to avoid or at least
+     acknowledge changes to the external interface.
+    </p>
+    <p>
+     The external interface of a component <em>may</em> correspond to
+     the <code>public</code> scope classes and members, but this is not
+     always the case. For example, a <code>protected</code> method of a class
+     designed to be extended by the clients of a component may
+     be deemed part of the external interface.
+    </p>
+   </subsection>
+   <subsection name="The Internal Interface">
+    <p>
+     The <em>internal</em> interface of a component is composed of the
+     classes, methods and attributes that are primarily or
+     exclusively intended for use by the component
+     implementation itself.  Clients to the component are
+     unlikely to use or be concerned with the internal
+     interface.
+    </p>
+    <p>
+     The internal interface of a component <em>may</em> correspond to
+     the <code>package</code> and <code>private</code> scope classes
+     and members of the component, but this is not always the case.
+     For example, a component implementation may be split over
+     multiple packages and hence require <code>protected</code> scope
+     members, or may, for design reasons, include an interface
+     intended primarily for internal use.
+    </p>
+   </subsection>
+   <subsection name="The Private Interface">
+    <p>
+     The <em>private</em> interface of a component is just that--the set
+     of classes, methods and attributes that have "package" or
+     <code>private</code> scope and hence cannot be used by external clients
+     by virtue of the Java Language Specification.
+    </p>
+   </subsection>
+   <p>
+    Whenever a class, interface or member is considered part of the
+    external or internal interface of a component, it should be
+    clearly indicated as such in the JavaDoc comments or other
+    documentation for the component. (We may want to consider
+    adding custom JavaDoc tags for this purpose.)
+   </p>
+  </section>
+  <section name="Types of Change">
+   <p>
+    We can categorize the changes to a component according to
+    the degree to which these changes are compatible with
+    previous releases of the component.  We define three such
+    categories: <em>fully-compatible</em>, <em>interface-compatible</em>,
+    and <em>external-interface-compatible</em>.
+   </p>
+   <subsection name="Fully-Compatible Changes">
+    <p>
+     Release <i>B</i> is said to be <em>fully-compatible</em>
+     with Release <i>A</i> if <i>B</i> can simply replace <i>A</i>
+     in (<a href="#note1">nearly</a>) all circumstances
+     and deployments without changing the client code or
+     configuration, and without changing the semantics of any
+     <code>public</code> or <code>protected</code> member.
+    </p>
+    <p>Examples of fully-compatible changes include:</p>
+    <ul>
+     <li>adding a non-<code>abstract</code> method to a class</li>
+     <li>adding a class or interface to a component</li>
+     <li>
+      changing a member from <code>private</code> to
+      <code>protected</code>
+     </li>
+     <li>
+      changing a <code>private</code> attribute to
+      a <code>private</code> method
+     </li>
+     <li>
+      changing an implementation such that a given external
+      library is no longer needed by the component
+     </li>
+     <li>
+      changing a method or class from <code>final</code> to
+      non-<code>final</code>
+     </li>
+     <li>
+      deprecating, but not otherwise changing, a class, inteface
+      or member
+     </li>
+     <li>
+      changing a component in order to fix a defect (a
+      deviation from the documented or reasonably expected
+      behavior), assuming no other incompatibilities are
+      introduced
+     </li>
+    </ul>
+    <p>Examples of changes which are not fully-compatible include:</p>
+    <ul>
+     <li>
+      a release that no longer supports the same set of JREs,
+      or that requires new libraries to be added to the
+      classpath
+     </li>
+     <li>
+      changing a <code>public</code> or <code>protected</code> method signature
+     </li>
+     <li>
+      changing the default value of an attribute in a
+      behaviour-impacting way
+     </li>
+     <li>
+      removing a class, interface, method or attribute
+      from either the internal or external interface of
+      the component
+     </li>
+    </ul>
+    <p>
+     Note that not every non-fully-compatible change
+     will cause compilation or readily apparent
+     run-time problems.
+    </p>
+    <p>
+     Generally speaking, a fully-compatible change will at
+     most change the private interface of a component, or simply
+     add classes, methods and attributes whose use is optional
+     to both internal and external interface clients.
+    </p>
+   </subsection>
+   <subsection name="Interface-Compatible Changes">
+    <p>
+     Release <i>B</i> is said to be "interface-compatible" with
+     Release <i>A</i> if (<a href="#note1">nearly</a>) all clients
+     that can be compiled with <i>A</i> in the classpath can
+     also be compiled with <i>B</i> in the classpath,
+     without changing the semantics of any <code>public</code> or
+     <code>protected</code> member.  A configuration or
+     classpath change may be required.
+    </p>
+    <p>
+      Examples of interface-compatible changes include:
+    </p>
+    <ul>
+      <li>all fully-compatible changes</li>
+      <li>
+         changing a component such that it now depends
+         upon an additional external library or
+         configuration file
+      </li>
+    </ul>
+    <p>
+      Examples of changes which are not interface-compatible
+      include:
+    </p>
+    <ul>
+      <li>
+         changing a public or protected method signature
+      </li>
+      <li>
+         changing the default value of an attribute in a
+         behaviour changing way
+      </li>
+      <li>
+         removing a class, interface, method or attribute
+         from either the internal or external interface of the
+         component
+      </li>
+    </ul>
+    <p>
+      Generally speaking, an interface-compatible change
+      will at most change the private interface of a
+      component, or simply add classes, methods and
+      attributes whose use is optional to both
+      internal and external interface clients.
+    </p>
+   </subsection>
+   <subsection name="External-Interface-Compatible Changes">
+    <p>
+     Release <i>B</i> is said to be "external-interface-compatible"
+     with Release <i>A</i> if (<a href="#note1">nearly</a>) all
+     clients that depend only on the external interface of a
+     component and that can be compiled with <i>A</i> in the
+     classpath can also be compiled with <i>B</i> in the classpath,
+     without changing the semantics of any member in the
+     <em>external</em> interface. A configuration or classpath
+     change may be required.
+    </p>
+    <p>
+      Examples of external-interface-compatible changes include:
+    </p>
+    <ul>
+      <li>all interface-compatible changes</li>
+      <li>
+          removing a class, interface, method or attribute from
+          the internal interface of the component
+      </li>
+      <li>
+          a change to the internal or private interface of a
+          component that requires a change in configuration
+          settings or in the external libraries required to
+          use the component
+      </li>
+      <li>
+          changes to the internal or private interface of a
+          component without impacting the external interface
+      </li>
+    </ul>
+    <p>
+      Examples of changes which are not
+      external-interface-compatible include:
+    </p>
+    <ul>
+      <li>
+        changing the method signature of any method that is
+        part of the external interface of the component
+      </li>
+      <li>
+        changing the default value of any attribute that is
+        part of the external interface of the component in a
+        behaviour changing way
+      </li>
+      <li>
+        removing a class, interface, method or attribute from
+        external interface of the component
+      </li>
+    </ul>
+    <p>
+      Generally speaking, external-interface-compatible
+      changes correspond to changes to at most the internal
+      interface of the component or the addition of
+      optional classes, interfaces or members to the
+      external interface.
+    </p>
+   </subsection>
+  </section>
+  <section name="Release Types">
+   <p>
+    We identify five types of releases: "Major", "Minor",
+    "Point", "Beta" and "Milestone".
+   </p>
+   <p>
+    Developers are encouraged to "upgrade" a release to a
+    stronger type whenever the nature or scope of the change
+    warrants it.
+   </p>
+   <subsection name="Major Releases">
+    <p>
+     Major releases signify significant changes to a component.
+     Developers <em>may</em> perform a major release if there have been
+     substantial improvements to the component.  Developers
+     <em>must</em> perform a major release whenever the new release
+     is not at least interface-compatible with the previous release.
+    </p>
+   </subsection>
+   <subsection name="Minor Releases">
+    <p>
+     Minor releases signify enhancements to a component that do
+     not necessitate a major release.  Developers <em>may</em> perform a
+     minor release if the release is at least
+     external-interface-compatible with the previous release.
+    <p>
+    </p>
+     In other words, whenever a client depends upon at most
+     the external interface of a component with a given minor
+     release, it will work with all subsequent minor releases
+     within that major release.
+    </p>
+   </subsection>
+   <subsection name="Point Releases">
+    <p>
+     A point release typically involves simple bug fixes or
+     optimizations that do not introduce new features.
+     Developers <em>may</em> perform a point release if the release
+     is at least interface-compatible with the
+     previous release.
+    </p>
+    <p>
+     In other words, whenever a client depends upon a component
+     with a given point release, it will work with all
+     subsequent point releases within that minor release.
+    </p>
+   </subsection>
+   <subsection name="Beta Releases">
+    <p>
+     Developers may, at their option, perform a beta preview of
+     any major, minor or point release.  Beta releases may be
+     performed for a variety of purposes such as:
+    </p>
+    <ul>
+     <li>Showcasing new, untested features</li>
+     <li>Providing early corrections of critical bugs</li>
+     <li>Generating a stable version before large-scale changes</li>
+    </ul>
+    <p>
+     While every effort should be made to ensure the quality of
+     released code, "beta" releases are essentially provided
+     as-is with no guarantees of stability or maintenance.
+    </p>
+   </subsection>
+   <subsection name="Milestone Releases">
+    <p>
+     Developers may, at their option, offer a milestone
+     preview of any major release.  A milestone release is
+     appropriate when part of the overall component is
+     fully functioning and the team wants to make it more widely
+     available for testing. Those features implemented and those
+     remaining to be implemented should be clearly defined and
+     documented.
+    </p>
+    <p>
+     While every effort should be made to ensure the quality of
+     released code, "milestone" releases are essentially
+     provided as-is with no guarantees of stability or
+     maintenance.
+    </p>
+   </subsection>
+  </section>
+  <section name="Release Numbers">
+   <subsection name="Initial Release Number">
+    <p>
+     A component's initial release number is generally
+     1.0[.0], unless there have been versioned beta releases.
+    </p>
+   </subsection>
+   <subsection name="Dissecting the Release Number">
+    <p>
+     A release number is comprised of 3 components: the major
+     release number, the minor release number, and an optional
+     point release number.  Here is a sample release number:
+    </p>
+    <p><code>2.0.4</code></p>
+    <p>and it can be broken into three parts:</p>
+    <ul>
+     <li>major release: 2</li>
+     <li>minor release: 0</li>
+     <li>point release: 4</li>
+    </ul>
+    <p>
+     The next release of this component would increment the
+     appropriate part of the release number, depending on the
+     type of release (major, minor, or point).  For example, a
+     subsequent minor release would be version 2.1, or a
+     subsequent major release would be 3.0.
+    </p>
+    <p>
+     Note that release numbers are composed of three _integers_,
+     not three <em>digits</em>.  Hence if the current release is
+     3.9.4, the next minor release is 3.10.0.
+    </p>
+   </subsection>
+   <subsection name="Beta Release Numbers">
+    <p>
+     Beta releases are denoted by adding
+     "B&lt;beta version number&gt;" after the release number.  For
+     example, if the current release version is 2.0.4, and a
+     developer wished to preview the next major release, the
+     release would be labeled 3.0-B1.
+    </p>
+   </subsection>
+   <subsection name="Milestone Release Numbers">
+    <p>
+     Milestone releases are denoted by adding
+     "M&lt;milestone version number&gt;" after the release number.  For
+     example, if the current release version is 2.0.4, and a
+     developer wished to preview the next major release, the
+     release would be labeled 3.0-M1.
+    </p>
+   </subsection>
+  </section>
+  <section name="Development States">
+   <p>
+    We identify four possible states: "in development", "beta",
+    "released", and "unsupported".
+   </p>
+   <subsection name="In Development State">
+    <p>
+      When a component is "in development", it is new and still
+      relatively unstable. Typically components in this state
+      do not have any binary releases available beyond the
+      nightly builds.  Users should be made aware that this
+      component may change its functionality or interface before
+      a stable release is achieved.  A "milestone" release may
+      be made while the component is still "in development" to
+      make the features currently implemented more widely
+      available for testing in a more stable test version.
+    </p>
+   </subsection>
+   <subsection name="Beta State">
+    <p>
+      When a component has made significant progress toward
+      release-quality code, the committers may vote to perform
+      a "beta" release.  At this point, the component state will
+      change from "in development" to "beta".  The component will
+      remain in this state until it is ready for its first major
+      release.
+    </p>
+    <p>
+      Note that developers may skip vote to skip the "beta" state
+      and go directly to "released", if the component is
+      sufficiently stable.
+    </p>
+   </subsection>
+   <subsection name="Released State">
+    <p>
+     When a new component is finally production-quality, the
+     developers may vote to perform the first major release.
+     At this point, the component status will be changed from
+     "beta" to "released".  In the future this component will
+     always be considered to be in the "released" state, even
+     when new releases are initiated. The only exception is in
+     the case of "unsupported" components.
+    </p>
+   </subsection>
+   <subsection name="Unsupported State">
+    <p>
+     Under rare circumstances, committers may vote to make a
+     component "unsupported", if there are no resources to
+     maintain the library or if it has been completely
+     supplanted by another component.  Only "released"
+     components may become "unsupported"; components in other
+     states will simply be terminated after a brief warning
+     period.
+    </p>
+   </subsection>
+  </section>
+  <section name="Comments">
+   <p>
+      Using this approach it is possible to very precisely and
+      concisely define the dependencies between a component and
+      its clients.
+   </p>
+   <p>
+      For example, suppose that the application Foo depends
+      (only) upon features of the commons-superwidget component
+      that are part of the external interface in release 2.3.0.
+      Then the maintainers of Foo can state with a high degree of
+      certainty that Foo will work with any 2.x release of
+      superwidget (x &gt;= 3).
+   </p>
+   <p>
+      Similarly, suppose the application Bar depends upon
+      features of superwidget that were part of the internal
+      interface of release 2.3.0.  Then the maintainers of Bar
+      can state with a high degree of certainty that Bar will
+      work with any 2.3.x release of superwidget.  Only once 2.4
+      (or 3.0) is released will Bar's developers have to
+      re-evaluate.
+   </p>
+  </section>
+  <section name="End Notes">
+   <dl>
+    <dt><a name="note1">Note 1</a></dt>
+    <dd>
+     We say "nearly" here since there are rare
+     or unusual circumstances in which changes that are usually
+     "safe" may cause problems for a small number of users.
+     For example, adding a new method to a component class
+     shouldn't in general cause problems for any clients. But it
+     may cause problems for some clients who've extended that
+     class and already added a method with the same signature in
+     their subclass.
+    </dd>
+   </dl>
+  </section>
+ </body>
+</document>

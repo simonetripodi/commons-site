@@ -1,0 +1,305 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+<document>
+
+ <properties>
+  <title>Publishing The Release</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+ </properties>
+
+<body> 
+
+<section name='Publishing The Release - Step By Step'>
+  <subsection name="Introduction">
+    <p>
+    This document gives step-by-step instructions for publishing a release. These instructions
+    assume that the component uses <code>Maven</code> to build the site.
+    </p>
+    <p>
+    The starting point for this document is that a release candidate has been created and a 
+    <code>[VOTE]</code> successfully passed.  Guidelines for these preparations can be 
+    found <a href='prepare.html'>here</a>.
+    </p>
+    <p>
+    In particular, it is assumed:
+    <ul>
+      <li>
+        The signed release candidate source and binary distributions and release notes are available
+        in ~/public_html/commons-foo-1.2-RC3.
+      </li>
+      <li>
+        The maven artifacts associated with the release are available in ~/public_html/commons-foo-1.2-RC3/maven.
+      </li>
+    </ul>
+    </p>
+  </subsection>
+
+  <subsection name='1 Move Releases Into Distribution Directories'>
+    <p>
+    On people.apache.org, change directory to the distribution directory for your component:
+    <pre>
+      cd /www/www.apache.org/dist/commons/foo/ </pre>
+    </p>
+    <p>
+    Move source distributions, their detached signatures and md5 sums into position. 
+    All source versions live in the <em>source</em> subdirectory.
+    <pre>
+      mv ~/public_html/foo-1.2-RC3/commons-foo-1.2-src* source </pre>
+    </p>
+    <p>
+    Move the binary distributions, their detached signatures and md5 sums into position. 
+    All binary versions live in the <em>binaries</em> subdirectory.
+    [Note: the source must have been moved already, otherwise the following command will
+    also be applied to the source files.]
+    <pre>
+      mv ~/public_html/foo-1.2-RC3/commons-foo-1.2* binaries </pre>
+    </p>
+    <p>
+    Double check the permissions for both binaries and source distributions.
+    The file permissions should be "-rw-rw-r--" and the group should be "commons", for example:
+    <pre>
+      -rw-rw-r--  1 userid   commons     203 Feb 21 23:45 commons-foo-1.2-src.tar.gz.asc
+    </pre>
+    </p>
+  </subsection>
+
+  <subsection name='2 Update Release Directory'>
+    <p>
+    <strong>Update README</strong><br/>
+    The contents of the <code>README.html</code> are displayed at the bottom of the html 
+    showing the directory listing. This document should be updated to reflect the new release.
+    If this document is not present, then copy one from an existing release directory
+    and edit that.
+    </p>
+    <p>
+    Update the latest release number. Please also read through and correct any mistakes you find
+    and fix other items (eg. urls) which need updating. 
+    </p>
+    <p>
+    Copy the revised <code>README.html</code> into the binary and source directories, replacing any old versions.
+    </p>
+    <p>
+    <a name='Check KEYS file'/>
+    <strong>Check KEYS file</strong><br/>
+    Check the <code>KEYS</code> file located in the main release directory. This should contain all the 
+    public keys which have been used to sign Commons' releases. Make sure that this file exists and 
+    that it contains the public key you've used to sign these releases. The <code>KEYS</code> file 
+    gives instructions on how to do this.
+    </p>
+    <p>
+    <strong>Symbolic Links</strong><br/>
+    These are no longer to be used, so please
+    <a href="http://www.apache.org/dev/mirror-step-by-step.html#symbolic_links">do not use symbolic links in mirrored directories!</a>
+    <strong>Update RELEASE-NOTES</strong><br/>
+    Replace the current <code>RELEASE-NOTES.txt</code> with the new release notes.
+    <pre>
+    mv ~/public_html/foo-1.2-RC3/RELEASE-NOTES.txt .
+    </pre>
+    </p>
+  </subsection>
+
+  <subsection name='3 Deploy Maven Artifacts'>
+    <p>
+    Download maven-metadata.xml for commons foo from repo1.maven.org.  This file is located in the top-level
+    directory for the component.  The file should contain a <code>versioning</code> element, similar to the following:
+    <pre>
+    &lt;versioning&gt;
+      &lt;release&gt;1.1&lt;/release&gt;
+      &lt;versions&gt;
+        &lt;version&gt;1.0&lt;/version&gt;
+        &lt;version&gt;1.1&lt;/version&gt;
+      &lt;/versions&gt;
+      &lt;lastUpdated&gt;20091011214529&lt;/lastUpdated&gt;
+    &lt;/versioning&gt; </pre>
+    </p>
+    <p>
+    Create a <code>version</code> element for 1.2, update the <code>release</code> version and update
+    the date in the <code>lastUpdated</code> element:
+    <pre>
+    &lt;versioning&gt;
+      &lt;release&gt;1.2&lt;/release&gt;
+      &lt;versions&gt;
+        &lt;version&gt;1.0&lt;/version&gt;
+        &lt;version&gt;1.1&lt;/version&gt;
+        &lt;version&gt;1.2&lt;/version&gt;
+      &lt;/versions&gt;
+      &lt;lastUpdated&gt;20100401214529&lt;/lastUpdated&gt;
+    &lt;/versioning&gt; </pre>
+    </p>
+    <p>
+    Create the hash files, maven-metadata.xml.sha1 and maven-metadata.xml.md5 for the updated metadata file.
+    If you do not have openssl or another suitable utility installed locally, you can upload the edited
+    maven-metadata.xml file to people.apache.org and use the following commands to create these files:
+    <pre>
+    md5 -q maven-metadata.xml > maven-metadata.xml.md5
+    sha1 -q maven-metadata.xml > maven-metadata.xml.sha1 </pre>
+    </p>
+    <p>
+    Your Maven artifacts (jar and pom files with hashes and signatures) should be placed in 
+    <code>/www/people.apache.org/repo/m2-ibiblio-rsync-repository/org/apache/commons/commons-foo/1.2/</code> on
+    people.apache.org. This assumes that your component has been migrated to use the org.apache.commons groupId.
+    If the component still uses commons-foo as its groupId, the deployment location should be
+    /www/people.apache.org/repo/m2-ibiblio-rsync-repository/commons-foo/commons-foo/1.2.  If your RC directory
+    includes a "maven" subdirectory including the maven artifacts, you can move the maven artifacts using 
+    the following commands (assuming the org.apache.commons groupId):
+    <pre>
+    mkdir /www/people.apache.org/repo/m2-ibiblio-rsync-repository/org/apache/commons/commons-foo/1.2
+    chgrp commons ~/public_html/foo-1.2-RC3/maven/*
+    chmod g+w ~/public_html/foo-1.2-RC3/maven/*
+    mv ~/public_html/foo-1.2-RC3/maven/* /www/people.apache.org/repo/m2-ibiblio-rsync-repository/org/apache/commons/commons-foo/1.2 </pre>
+    </p>
+    <p>
+    Double-check permissions on the newly created directory and the deployed files.  Also double-check that all
+    of the artifacts have hashes and signature files associated with them.
+    </p>
+    <p>
+    The updated <code>maven-metadata.xml</code> and its sha1 and md5 hashes should be placed in the directory
+    above the deployed artifacts 
+    (<code>/www/people.apache.org/repo/m2-ibiblio-rsync-repository/org/apache/commons/commons-foo</code> if
+    org.apache.commons is the groupId).
+    </p>
+    <p>
+    The files placed here will be mirrored (after some delay) to the public distribution
+    repository on <a href="http://repo1.maven.org/maven2/">http://repo1.maven.org/maven2/</a>.
+    </p>
+  </subsection>
+
+  <subsection name='4 Test Main Site Downloads'>
+    <p>
+    Wait until the release files are available from the main Apache web site 
+    (<code>http://www.apache.org/dist/commons/foo/</code>), then confirm things are good.
+    </p>
+    <p>
+    Check the main directory:
+    <ol>
+      <li> 
+      Examine the directory listing page. At the bottom should be found the information you
+      entered into the <code>README.html</code>. Please check that this is correct.
+      </li>
+      <li>
+      Check the <code>KEYS</code> file
+      </li>
+      <li>
+      Check the <code>RELEASE-NOTES.txt</code>
+      </li>
+      <li>Download and verify the current distributions, the following might help 
+      <code>committers/tools/releases/verify_sigs.sh</code>. </li>
+    </ol>
+    </p>
+    <p>
+    Follow the links to the binaries and source directories. 
+    Check them in a similar manner.
+    </p>
+  </subsection>
+
+  <subsection name="5 Update Component Build and Website">
+    <ul>
+    <li>
+    <strong>Update trunk version</strong>
+    Update current version found in <code>pom.xml</code> in the trunk if it has not already been done. 
+    This should be updated to a <code>SNAPSHOT</code> release, eg change "1.2" to "1.3-SNAPSHOT".  If
+    the component maintains an Ant build and the version is specified in build.xml, make sure to update
+    this as well.
+    </li>
+    <li>
+    <strong>Publish the website</strong>,
+    per the instructions <a href="publish-site.html">here</a>. 
+    </li>
+    </ul>
+  </subsection>
+
+  <subsection name='6 Create Announcements'>
+    <p>
+    Announce the availability of the new release. 
+    </p>
+    <p>
+    Please remember to give a brief description of your component. Please also remember to remind people 
+    about verifying the signatures. The subject should be something like <code>[ANNOUNCEMENT] Foo 1.2 Released</code>. 
+    Send this mail from your Apache account. Please spell check the document!
+    </p>
+    <p>  
+    Wait to send the release announcement until you have verified that 
+    <ol>
+    <li>The release artifacts are available on the mirrors.</li>
+    <li>The component website including the updated download page has been updated on the public site
+        http://commons.apache.org/foo.</li>
+    <li>If the component publishes maven artifacts, these artifacts have been replicated to the central
+        maven repo at repo1.maven.org. (Clear your local repo of the release artifacts and either activate
+        the clirr report with the updated version info or update a local project with a dependency to the new
+        release version to get maven to try to download the release artifacts.  Or just access repo1 using a web
+        browser.)</li>
+    </ol>
+    </p>
+    <p>
+    The release announcement should go to (at least) the following mailing lists:
+    <ul>
+    <li>announce@apache.org</li>
+    <li>dev@commons.apache.org</li>
+    <li>user@commons.apache.org</li>
+    </ul>
+    </p>
+  </subsection>
+
+  <subsection name='7 Post Release Cleanup'>
+    <p>
+    That's it! The release is out there - but there is still some tidying up to be done.
+    </p>
+    <ul>
+    <li>
+    <strong>Remove Obsolete Releases</strong><br/>
+    Unless old versions are especially required, remove them from the dist directory. This 
+    will cause the files to also be deleted from the mirrors and
+    save them some diskspace as well as simplifying things for users. 
+    Note that the contents of the /www/www.apache.org/dist directory is regularly copied to
+    /www/archive.apache.org/dist and from there transferred to host archive.apache.org.
+    Deleting files from the standard distribution directories does <i>not</i> delete
+    them from the archive dist directories so users will
+    still be able to access old files even when they are not available from the mirrors.
+    </li>
+    <li>
+    <strong>Update JIRA</strong>
+    Mark the release as released in the JIRA project admin and CLOSE all issues RESOLVED
+    in this release.  Make sure the FIX VERSION for all issues closed with this release
+    is set correctly to this version. If this has not already been done, create a JIRA version
+    for the next release.
+    </li>
+    <li>
+    <strong>Update DOAP file</strong>
+    Update the component's <a href="http://projects.apache.org/guidelines.html">DOAP file</a>
+    with details of the released version:
+    <pre>
+      &lt;release&gt;
+        &lt;Version&gt;
+          &lt;name&gt;x.y.z&lt;/name&gt;
+          &lt;created&gt;yyyy-mm-dd&lt;/created&gt;
+          &lt;revision&gt;x.y.z&lt;/revision&gt;
+        &lt;/Version&gt;
+      &lt;/release&gt; </pre>
+    </li>
+    <li>
+    <strong>Update changes.xml</strong>
+    If the component uses the maven changes plugin to maintain its changelog, fill in the release
+    date for the just released version and create a new release element for the next release.
+    </li>
+    </ul>
+  </subsection>
+
+</section>
+
+</body>
+</document>

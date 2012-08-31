@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+   Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+-->
+
+<document>
+
+ <properties>
+  <title>Building Components</title>
+  <author email="dev@commons.apache.org">Commons Documentation Team</author>
+ </properties>
+
+ <body>
+  <section name='Introduction'>
+    <p>
+    This document provides information on setting up and executing builds for
+    Apache Commons components and web sites. The contents include best
+    practices and conventions that commons components should follow.
+    This information should be useful to committers setting up
+    new components as well as to volunteers who want to build commons
+    components or web sites from source or to contribute patches to the build
+    artifacts.
+    </p>
+    <p>
+    The assumption throughout is that we are working with a component named
+    "Apache Commons Foo" that uses Maven as its build system, both for
+    distribution binaries and for the web site.
+    </p>
+    <p>
+    Some knowledge of Maven is assumed in this document.  Please refer to the
+    <a href="http://maven.apache.org/guides/">Maven user guide</a>
+    for more information. Most commons components now use version 2 of Maven,
+    so this is the Maven version assumed throughout this document.
+    See <a href="building-m1.html">here</a> for Maven 1 details.
+    </p>
+  </section>
+
+  <section name='Local environment setup'>
+    <p>
+    To build Apache Commons components or web sites, you need to have Maven
+    installed and the project source files checked out locally.
+    </p>
+    <subsection name='Getting and installing Maven'>
+      <p>
+      Follow the 
+      <a href="http://maven.apache.org/download.html">
+      Maven download instructions</a> to download and install Maven.
+      </p>
+    </subsection>
+    <subsection name='Checking out the commons sources'>
+      <p>
+      Follow the 
+      <a href="http://commons.apache.org/svninfo.html">
+      commons subversion instructions</a> to check out the commons source
+      files. If you want to build commons component web sites, you need to have
+      the <code>commons-build</code> module checked out as a peer to whatever 
+      component(s) you are trying to generate the site for. If you check out
+      the full set of "trunks" using the svn externals "trunks-proper" or
+      "trunks-sandbox" this will happen automatically.
+      </p>
+    </subsection>
+    <subsection name='Configuring local properties'>
+      <p>
+      You only need to configure local properties if you want to build using
+      different versions of Java.
+      See <a href="commons-parent-pom.html#Testing_with_different_Java_versions">here</a>
+      for more details.
+      </p>
+    </subsection> 
+  </section>
+
+  <section name="Maven Commands">
+
+    <subsection name="Running the Tests">
+      <p>
+        To run a component's tests:
+      </p>
+      <source>mvn test</source>
+    </subsection> 
+
+    <subsection name="Creating a jar file">
+      <p>
+        To create a component's jar:
+      </p>
+      <source>mvn package</source>
+    </subsection> 
+
+    <subsection name="Installing">
+      <p>
+        To install a component in your local repository:
+      </p>
+      <source>mvn install</source>
+    </subsection>
+
+    <subsection name="Source and binary distributions">
+      <p>
+        To create the source and binary distributions for a component
+        (and the javadoc and sources jars):
+      </p>
+      <source>mvn -Prc package</source>
+    </subsection> 
+
+    <subsection name="Generating the Site">
+      <p>
+        To generate a components site:
+      </p>
+      <source>mvn site</source>
+    </subsection>
+
+  </section>
+
+ </body>
+</document>

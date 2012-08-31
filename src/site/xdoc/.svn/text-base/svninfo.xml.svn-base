@@ -1,0 +1,150 @@
+<?xml version="1.0"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements.  See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<document>
+
+  <properties>
+    <author email="dev@commons.apache.org">The Apache Commons Documentation Team</author>
+    <title>Source Repositories</title>
+  </properties>
+
+<body>
+
+<section name="Download the Source">
+
+<p>
+Most users of the source code probably don't need to have day to
+day access to the source code as it changes. For these users we
+provide easy-to-unpack source code downloads. See the "Releases"
+link on the Commons page.
+</p>
+
+</section>
+
+<section name="Access the Version Control System (quick info)">
+<p>
+Enter the following URL into a web browser to browse the latest source code,
+or pass that same url to a subversion client application to check the code out
+to your local machine, after replacing {component-name} with the appropriate
+value.
+<pre>
+   http://svn.apache.org/repos/asf/commons/proper/{component-name}/trunk
+</pre>
+</p>
+<p>
+Alternatively, enter the following URL into a web browser to browse the latest
+source code including history and commit information. Note that despite the
+name "viewvc" appearing in this link, the information <i>is</i> from the
+ASF Subversion repository.
+<pre>
+   http://svn.apache.org/viewvc/commons/proper/{component-name}/trunk
+</pre>
+</p>
+</section>
+
+<section name="Access the Version Control System (details)">
+<p>
+The root url of the ASF Subversion repository is <b>http://svn.apache.org/repos/asf/</b>
+for read-only access and <b>https://svn.apache.org/repos/asf/</b> for committers. 
+</p>
+<p>
+The URLs for direct access to the commons section of that repository are:
+<ul>
+<li>
+ <a href="http://svn.apache.org/repos/asf/commons">
+   http://svn.apache.org/repos/asf/commons
+ </a>
+ for non-committers, and
+</li>
+<li>
+ <a href="https://svn.apache.org/repos/asf/commons">
+   https://svn.apache.org/repos/asf/commons
+ </a>
+ for committers.
+</li>
+</ul>
+</p>
+<p>
+The "proper" subdirectory leads to the code for official commons components.
+The "sandbox" subdirectory leads to the code for experimental commons components.
+</p>
+<p>
+Subdirectories "trunks-proper" and "trunks-sandbox" are special directories that
+should be ignored by most users; they have Subversion "external attributes"
+associated with them so that when checking out those directories using a subversion
+client application, the directory created actually contains the "trunk" directory
+of every commons or sandbox project. This is useful for special purposes such as
+building the commons website. Most users can ignore these directories and access
+the trunk of a project via the "proper" or "sandbox" directory.
+</p>
+<p>
+You can directly browse the <i>latest</i> version of ASF the code in Subversion by entering
+one of the above URLs into a standard web browser. Once you have found a directory of 
+interest, you can pass the same URL to a subversion client in order to check
+out the files locally.
+</p>
+
+<p>
+As an alternative, you can browse the repository (including access to file history)
+via one of the links below. Once you have found a file or directory of
+interest, replace the url prefix "http://svn.apache.org/viewvc" with the
+appropriate subversion root url (see above).
+<ul>
+<li><a href="http://svn.apache.org/viewvc/commons/proper">browse proper components via viewer</a></li>
+<li><a href="http://svn.apache.org/viewvc/commons/sandbox">browse sandbox components via viewer</a></li>
+<li><a href="http://svn.apache.org/viewvc/commons/dormant">browse dormant components via viewer</a></li>
+</ul>
+</p>
+
+<p><b>Important!</b> When checking out a directory in subversion, ensure that you
+do not check out a directory that has "tags" and "branches" subdirectories, as this will
+result in getting a complete copy of the code for every branch and tag ever made.
+If you want the latest code, you generally want the directory <b>{component-name}/trunk</b>,
+though you should check the project directory structure first via one of the methods
+listed above, as different projects may use different internal directory structures.
+For example, some projects which support multiple versions of Java may use 
+<b>{component-name}/branches/{branch-name}</b> as well as {component-name}/trunk.
+</p>
+<p>
+<b>Important!</b> At the current time, selecting by date in subversion within the
+ASF repository isn't reliable. The reason is that when converting a date to a revision
+number, subversion assumes that revision N has an earlier date than revision N+M, and
+that it can therefore perform a binary search on revision numbers to locate one with
+the required date. However CVS imports of data that retain the original date
+information from CVS break this assumption. And unfortunately because revisions
+are repository-wide information, this affects date-based searches
+even in directories unrelated to the ones that CVS stuff was imported into.
+So while dates are reported correctly in "svn log" output, only revision numbers should
+be used with the -r option. See issue #752 in the subversion issue tracker at tigris.org.
+</p>
+<p>
+For more information on connecting to the ASF Subversion repository, see the 
+<a href="http://www.apache.org/dev/version-control.html">ASF version control page</a>. 
+</p>
+
+</section>
+
+<section name="About Subversion">
+<p>
+Subversion is an open-source version control system designed to be "a better CVS".
+More information about subversion can be found at
+<a href="http://subversion.tigris.org/">the tigris subversion site</a>.
+</p>
+</section>
+
+</body>
+</document>

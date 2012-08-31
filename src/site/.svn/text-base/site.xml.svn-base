@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+ Licensed to the Apache Software Foundation (ASF) under one or more
+ contributor license agreements.  See the NOTICE file distributed with
+ this work for additional information regarding copyright ownership.
+ The ASF licenses this file to You under the Apache License, Version 2.0
+ (the "License"); you may not use this file except in compliance with
+ the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<project name="Apache Commons">
+  <bannerLeft>
+    <name>Apache Commons</name>
+    <src>/images/commons-logo.png</src>
+    <alt>Apache Commons logo</alt>
+    <href>http://commons.apache.org/</href>
+  </bannerLeft>
+  <publishDate format="dd MMMM yyyy" position="left" />
+  <!-- We don't currently maintain a site version. Skip display (otherwise picks up irrelevant parent version) -->
+  <version position="none"/>
+  <skin>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-skin</artifactId>
+    <version>3</version>
+  </skin>
+  <body>
+    <links>
+      <item name="Components"            href="/components.html" />
+      <item name="Sandbox"               href="/sandbox/index.html" />
+      <item name="Dormant"               href="/dormant/index.html" />
+      <item name="ApacheCon"             href="http://www.apachecon.com/"/>
+      <item name="Apache"                href="http://www.apache.org"/>
+    </links>
+    <menu name="Commons">
+      <item name="Home"                  href="/index.html"/>
+      <item name="License"               href="http://www.apache.org/licenses/"/>
+      <item name="Mailing Lists"         href="/mail-lists.html"/>
+      <item name="PMC"                   href="/team-list.html"/>
+      <item name="Components"            href="/components.html" collapse="true">
+        <!-- This list should agree with xdoc/index.xml and xdoc/components.xml and xdoc/downloads/index.xml -->
+        <item name="Attributes"          href="/attributes/" />
+        <item name="BCEL"                href="/bcel/" />
+        <item name="Beanutils"           href="/beanutils/" />
+        <item name="Betwixt"             href="/betwixt/" />
+        <item name="BSF"                 href="/bsf/" />
+        <item name="Chain"               href="/chain/" />
+        <item name="CLI"                 href="/cli/" />
+        <item name="Codec"               href="/codec/" />
+        <item name="Collections"         href="/collections/" />
+        <item name="Compress"            href="/compress/" />
+        <item name="Configuration"       href="/configuration/" />
+        <item name="CSV"                 href="/csv/" />
+        <item name="Daemon"              href="/daemon/" />
+        <item name="DBCP"                href="/dbcp/" />
+        <item name="DbUtils"             href="/dbutils/" />
+        <item name="Digester"            href="/digester/" />
+        <item name="Discovery"           href="/discovery/" />
+        <item name="EL"                  href="/el/" />
+        <item name="Email"               href="/email/" />
+        <item name="Exec"                href="/exec/" />
+        <item name="FileUpload"          href="/fileupload/" />
+        <item name="Functor"             href="/functor/" />
+        <item name="Imaging (was Sanselan)" href="/imaging/" />
+        <item name="IO"                  href="/io/" />
+        <item name="JCI"                 href="/jci/" />
+        <item name="JCS"                 href="/jcs/" />
+        <item name="Jelly"               href="/jelly/" />
+        <item name="Jexl"                href="/jexl/" />
+        <item name="JXPath"              href="/jxpath/" />
+        <item name="Lang"                href="/lang/" />
+        <item name="Launcher"            href="/launcher/" />
+        <item name="Logging"             href="/logging/" />
+        <item name="Math"                href="/math/" />
+        <item name="Modeler"             href="/modeler/" />
+        <item name="Net"                 href="/net/" />
+        <item name="OGNL"                href="/ognl/" />        
+        <item name="Pool"                href="/pool/" />
+        <item name="Primitives"          href="/primitives/" />
+        <item name="Proxy"               href="/proxy/" />
+        <item name="Sanselan => Imaging" href="/imaging/" />
+        <item name="SCXML"               href="/scxml/" />
+        <item name="Transaction"         href="/transaction/" />
+        <item name="Validator"           href="/validator/" />
+        <item name="VFS"                 href="/vfs/" />
+      </item>
+      <item name="Sandbox"               href="/sandbox/index.html" collapse="true">
+        <!-- This list should agree with xdoc/sandbox/index.xml -->
+        <item name="CLI2"                href="/sandbox/cli2/" />
+        <item name="Convert"             href="/sandbox/convert/" />
+        <item name="CSV"                 href="/sandbox/csv/" />
+        <item name="Finder"              href="/sandbox/finder/" />
+        <item name="Flatfile"            href="/sandbox/flatfile/" />
+        <item name="Functor"             href="/sandbox/functor/" />
+        <item name="Graph"               href="/sandbox/graph/" />
+        <item name="I18n"                href="/sandbox/i18n/" />
+        <item name="Id"                  href="/sandbox/id/" />
+        <item name="Javaflow"            href="/sandbox/javaflow/" />
+        <item name="JNet"                href="/sandbox/jnet/" />
+        <item name="Monitoring"          href="/sandbox/monitoring/" />
+        <item name="Nabla"               href="/sandbox/nabla/" />
+        <item name="OpenPGP"             href="/sandbox/openpgp/" />
+        <item name="Performance"         href="/sandbox/performance/" />
+        <item name="Pipeline"            href="/sandbox/pipeline/" />
+        <item name="Runtime"             href="/sandbox/runtime/" />
+      </item>
+      <item name="Dormant"               href="/dormant/index.html" collapse="true">
+        <!-- This list should agree with xdoc/dormant/index.xml -->
+        <item name="Cache"               href="/dormant/cache/" />
+        <item name="Clazz"               href="/dormant/clazz/" />
+        <item name="Contract"            href="/dormant/contract/" />
+        <item name="Convert"             href="/dormant/convert/" />
+        <item name="Events"              href="/dormant/events/" />
+        <item name="Feedparser"          href="/dormant/feedparser/" />
+        <item name="JJar"                href="/dormant/jjar/" />
+        <item name="Latka"               href="/dormant/latka/" />
+        <item name="Mapper"              href="/dormant/mapper/" />
+        <item name="Messenger"           href="/dormant/messenger/" />
+        <item name="Resources"           href="/dormant/resources/" />
+        <item name="Scaffold"            href="/dormant/scaffold/" />
+        <item name="ThreadPool"          href="/dormant/threadpool/" />
+        <item name="Workflow"            href="/dormant/workflow/" />
+        <item name="XMLIO"               href="/dormant/xmlio/" />
+      </item>
+    </menu>
+    <menu name="Releases">
+      <item name="Releases"              href="/downloads/index.html"/>
+    </menu>
+    <menu name="Source Repositories">
+      <item name="General Information"   href="/svninfo.html"/>
+      <item name="Components"            href="http://svn.apache.org/viewvc/commons/proper/"/>
+      <item name="Sandbox"               href="http://svn.apache.org/viewvc/commons/sandbox/"/>
+      <item name="Dormant"               href="http://svn.apache.org/viewvc/commons/dormant/"/>
+    </menu>
+
+    <!-- Should agree with commons-parent -->
+    <menu name="General Information">
+      <item name="Volunteering"          href="/volunteering.html" />
+      <item name="Contributing Patches"  href="/patches.html" />
+      <item name="Building Components"   href="/building.html" />
+      <item name="Releasing Components"  href="/releases/index.html" />
+      <item name="Wiki"                  href="http://wiki.apache.org/commons/FrontPage" />
+    </menu>
+
+    <!-- Should agree with commons-parent -->
+    <menu name="ASF">
+      <item name="How the ASF works"     href="http://www.apache.org/foundation/how-it-works.html" />
+      <item name="Get Involved"          href="http://www.apache.org/foundation/getinvolved.html" />
+      <item name="Developer Resources"   href="http://www.apache.org/dev/" />
+      <item name="Sponsorship"           href="http://www.apache.org/foundation/sponsorship.html" />
+      <item name="Thanks"                href="http://www.apache.org/foundation/thanks.html" />
+    </menu>
+  </body>
+
+  <poweredBy>
+    <!-- Add ApacheCon logo -->
+    <logo name="ApacheCon" href="http://www.apache.org/events/current-event.html"
+          img="http://www.apache.org/events/current-event-125x125.png"/>
+    <!-- Keep the default logo as well -->
+    <logo name="Maven" href="http://maven.apache.org/"
+          img="http://maven.apache.org/images/logos/maven-feather.png"/>
+  </poweredBy>
+
+  <!-- layout should agree with commons-parent (content will differ) -->
+  <custom>
+    <footer>
+      <div class="center">
+      Apache Commons, Apache, the Apache feather logo, and the Apache Commons project logos are trademarks of The Apache Software Foundation.
+      All other marks mentioned may be trademarks or registered trademarks of their respective owners.</div>
+    </footer>
+  </custom>
+</project>
